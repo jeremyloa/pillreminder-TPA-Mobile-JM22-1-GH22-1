@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "918358412448",
+    "project_id": "tpamobile-b67bf",
+    "storage_bucket": "tpamobile-b67bf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:918358412448:android:66a10a38fbfe30d6a6cdc5",
+        "android_client_info": {
+          "package_name": "edu.bluejack22_1.pillreminder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "918358412448-7e3fuq3vpralsiicvqdmv8b497crb387.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLoYXLtbLb2U5779SobOZ9ZZ-_pYWYFFo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "918358412448-7e3fuq3vpralsiicvqdmv8b497crb387.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
