@@ -1,14 +1,13 @@
-package edu.bluejack22_1.pillreminder;
+package edu.bluejack22_1.pillreminder
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 
-import android.os.Bundle;
-
-public class RegisterActivity extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+class RegisterbyMail : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_registerbymail)
     }
+
+
 }

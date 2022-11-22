@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginMain">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/logo"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical">
+
+             <ImageView
+                android:layout_width="100dp"
+                android:layout_height="120dp"
+                android:src="@drawable/logo"
+                android:layout_marginTop="100dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/loginTitle"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/logo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="Account Login"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textColor="@color/blue1"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_below="@id/loginTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp">
+
+
+            <EditText
+                android:id="@+id/loginMail"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="E-mail" />
+
+            <EditText
+                android:id="@+id/loginPass"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:password="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-black"
+                android:text="Forgot Password"
+                android:layout_marginTop="10dp"
+                android:textAlignment="center"
+                android:textColor="@color/blue2"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/toLoginEmailBtn"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Login with E-mail"
+                android:backgroundTint="@color/blue2"/>
+
+            <Button
+                android:id="@+id/toLoginGoogleBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/white"
+                android:text="Login with Google"
+                android:textColor="@color/blue1"/>
+
+            <Button
+                android:id="@+id/toRegMainBtn"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Register"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/blue3"/>
+
+        </LinearLayout>
+</RelativeLayout>
