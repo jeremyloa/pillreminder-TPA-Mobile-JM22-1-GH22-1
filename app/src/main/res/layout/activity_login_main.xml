@@ -38,7 +38,7 @@
                 android:text="Account Login"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                android:textColor="@color/blue1"
+                android:textColor="?attr/colorPrimaryVariant"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -53,36 +53,41 @@
 
             <EditText
                 android:id="@+id/loginMail"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/lato"
                 android:hint="E-mail" />
 
             <EditText
                 android:id="@+id/loginPass"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/lato"
                 android:hint="Password"
                 android:password="true" />
 
             <TextView
+                android:id="@+id/toForget"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-black"
                 android:text="Forgot Password"
+                android:clickable="true"
                 android:layout_marginTop="10dp"
                 android:textAlignment="center"
-                android:textColor="@color/blue2"
+                android:textColor="?attr/colorPrimary"
                 android:textSize="16sp" />
 
             <Button
                 android:id="@+id/toLoginEmailBtn"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="?attr/colorPrimary"
                 android:text="Login with E-mail"
-                android:backgroundTint="@color/blue2"/>
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/toLoginGoogleBtn"
@@ -95,12 +100,12 @@
 
             <Button
                 android:id="@+id/toRegMainBtn"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="?attr/colorSecondaryVariant"
                 android:text="Register"
-                android:textColor="@color/black"
-                android:backgroundTint="@color/blue3"/>
+                android:textColor="@color/white" />
 
         </LinearLayout>
 </RelativeLayout>

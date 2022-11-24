@@ -38,7 +38,7 @@
                 android:text="Account Registration"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                android:textColor="@color/blue1"
+                android:textColor="?attr/colorPrimaryVariant"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -52,18 +52,20 @@
 
             <EditText
                 android:id="@+id/regisName"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Name"/>
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/lato"
+                android:hint="Name" />
 
             <EditText
                 android:id="@+id/regisPhone"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/lato"
                 android:hint="Phone Number"
-                android:phoneNumber="true"/>
+                android:phoneNumber="true" />
 
            <Spinner
                 android:id="@+id/regisRole"
@@ -75,11 +77,12 @@
 
             <Button
                 android:id="@+id/toRegEmailBtn"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="?attr/colorPrimary"
                 android:text="Register with E-mail"
-                android:backgroundTint="@color/blue2"/>
+                android:textColor="?attr/colorOnPrimary" />
 
             <Button
                 android:id="@+id/toRegGoogleBtn"
@@ -92,12 +95,12 @@
 
             <Button
                 android:id="@+id/toLoginMainBtn"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="?attr/colorSecondaryVariant"
                 android:text="Login"
-                android:textColor="@color/black"
-                android:backgroundTint="@color/blue3"/>
+                android:textColor="?attr/colorOnPrimary" />
 
         </LinearLayout>
 </RelativeLayout>
