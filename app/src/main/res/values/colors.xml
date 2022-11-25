@@ -11,5 +11,7 @@
     <color name="blue4">#84D2F6</color>
     <color name="blue5">#91E5F6</color>
     <color name="black">#FF000000</color>
+    <color name="black_lighter">#262626</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="white_darker">#F1F1F1</color>
 </resources>
