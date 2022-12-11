@@ -1,4 +1,4 @@
-package edu.bluejack22_1.pillreminder
+package edu.bluejack22_1.pillreminder.controller.auth
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,7 +8,10 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import edu.bluejack22_1.pillreminder.controller.main.MainActivity
 import edu.bluejack22_1.pillreminder.databinding.ActivityLoginMainBinding
+import edu.bluejack22_1.pillreminder.model.DoctorContact
+import edu.bluejack22_1.pillreminder.model.User
 
 class LoginMain : AppCompatActivity() {
 
@@ -19,7 +22,7 @@ class LoginMain : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         auth = Firebase.auth
         binding = ActivityLoginMainBinding.inflate(layoutInflater)
-        UserCurrent.logout()
+        User.logout()
         forgotListener()
         loginEmailListener()
         loginGoogleListener()
@@ -49,7 +52,7 @@ class LoginMain : AppCompatActivity() {
                 auth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
 //                    Log.d("Login Firebase", "signInWithEmail:success")
-                    UserCurrent.login(auth.currentUser!!.uid)
+                    User.login(auth.currentUser!!.uid)
                     startActivity(Intent(this, MainActivity::class.java))
                     finish()
                 } else {

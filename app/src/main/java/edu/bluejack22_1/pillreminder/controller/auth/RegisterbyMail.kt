@@ -1,4 +1,4 @@
-package edu.bluejack22_1.pillreminder
+package edu.bluejack22_1.pillreminder.controller.auth
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +12,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import edu.bluejack22_1.pillreminder.databinding.ActivityRegisterbymailBinding
+import edu.bluejack22_1.pillreminder.model.User
 
 class RegisterbyMail : AppCompatActivity() {
 
@@ -54,36 +55,16 @@ class RegisterbyMail : AppCompatActivity() {
                 val email = binding.regisMail.text.toString()
                 val pass = binding.regisPass.text.toString()
                 val rol = if (role.equals("Register as Doctor")) "doctors" else "patients"
-                if (!checkExist(rol, email, name, phone)) {
+                if (!checkExist(email)) {
                     Log.d("Register Firebase", "Checked not exist")
-                    auth.createUserWithEmailAndPassword(email, pass)
-                    .addOnCompleteListener(this) { task ->
-                        if (task.isSuccessful) {
-                            Log.d("Register Firebase", "Added to auth")
-                            val user = task.result.user
-                            val addDoc = hashMapOf(
-                                "role" to rol,
-                                "name" to name,
-                                "email" to email,
-                                "phone" to phone,
-                                "photo" to "https://i.pravatar.cc/150?u=" + user!!.uid
-                            )
-                            db.collection("users").document(user!!.uid).set(addDoc).addOnSuccessListener { doc ->
-                                 Log.d("Register Firebase", "Register Success")
-                                Toast.makeText(this, "You are now registered. ", Toast.LENGTH_SHORT).show()
-                                UserCurrent.logout()
-                                val intent = Intent(this, LoginMain::class.java)
-                                startActivity(intent)
-                                finish()
-                            }
-                            .addOnFailureListener { e ->
-                                Log.d("Register Firebase", "Add user to database error")
-//                                Toast.makeText(this, "Add user to database error", Toast.LENGTH_SHORT).show()
-                            }
-                        } else {
-                            Log.d("Register Firebase", "Add user to auth error")
-                            Toast.makeText(this, "User already existed", Toast.LENGTH_SHORT).show()
-                        }
+                    val reg = User.register(rol, email, pass, name.toString(), phone.toString())
+                    if (reg) {
+                        Toast.makeText(this, "You are now registered.", Toast.LENGTH_SHORT).show()
+                        User.logout()
+                        startActivity(Intent(this, LoginMain::class.java))
+                        finish()
+                    } else {
+                        Toast.makeText(this, "Registration failed", Toast.LENGTH_SHORT).show()
                     }
                 } else {
                     Toast.makeText(this, "User already existed", Toast.LENGTH_SHORT).show()
@@ -96,20 +77,14 @@ class RegisterbyMail : AppCompatActivity() {
         binding.toLoginPageBtn.setOnClickListener{
             val intent = Intent(this, LoginMain::class.java)
             startActivity(intent)
+            finish()
         }
     }
 
-    private fun checkExist(rol:String, email:String, name:String?, phone:String?):Boolean {
+    private fun checkExist(email:String):Boolean {
         var cek = false
-        db.collection("users").get().addOnSuccessListener { res ->
-            for (doc in res) {
-                if (doc.getString("email").equals(email) || doc.getString("phone").equals(phone)) cek = true
-                tempList.add(User(rol, doc.id, doc.getString("name"), doc.getString("email"), doc.getString("phone"), doc.getString("photo")))
-            }
-        }
-        .addOnFailureListener { exception ->
-            Toast.makeText(this, exception.toString(), Toast.LENGTH_SHORT).show()
-        }
+        var user = User.get_user_email(email)
+        if (user != null) cek = true
         return cek
     }
 }

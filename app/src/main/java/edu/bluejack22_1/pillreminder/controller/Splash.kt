@@ -1,4 +1,4 @@
-package edu.bluejack22_1.pillreminder
+package edu.bluejack22_1.pillreminder.controller
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,8 +6,10 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
+import edu.bluejack22_1.pillreminder.R
+import edu.bluejack22_1.pillreminder.controller.auth.LoginMain
+import edu.bluejack22_1.pillreminder.controller.main.MainActivity
+import edu.bluejack22_1.pillreminder.model.User
 
 class Splash : AppCompatActivity() {
 
@@ -15,9 +17,11 @@ class Splash : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         var auth = FirebaseAuth.getInstance()
+        User.fetch_all_users()
 
         Handler(Looper.getMainLooper()).postDelayed({
             if (auth.currentUser!=null) {
+                User.login(auth.currentUser!!.uid)
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()
             } else {

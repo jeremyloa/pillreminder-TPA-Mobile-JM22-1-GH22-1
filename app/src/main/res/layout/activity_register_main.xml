@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterMain">
+    tools:context=".controller.auth.RegisterMain">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -35,7 +35,7 @@
                 android:layout_height="match_parent"
                 android:layout_centerHorizontal="true"
                 android:fontFamily="@font/montserrat_semibold"
-                android:text="Account Registration"
+                android:text="@string/account_registration"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textColor="?attr/colorPrimaryVariant"
@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/lato"
-                android:hint="Name" />
+                android:hint="@string/name" />
 
             <EditText
                 android:id="@+id/regisPhone"
@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/lato"
-                android:hint="Phone Number"
+                android:hint="@string/phone_number"
                 android:phoneNumber="true" />
 
            <Spinner
@@ -81,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:backgroundTint="?attr/colorPrimary"
-                android:text="Register with E-mail"
+                android:text="@string/register_with_e_mail"
                 android:textColor="?attr/colorOnPrimary" />
 
             <Button
@@ -90,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:backgroundTint="@color/white"
-                android:text="Register with Google"
+                android:text="@string/register_with_google"
                 android:textColor="@color/blue1"/>
 
             <Button
@@ -99,7 +99,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:backgroundTint="?attr/colorSecondaryVariant"
-                android:text="Login"
+                android:text="@string/login"
                 android:textColor="?attr/colorOnPrimary" />
 
         </LinearLayout>

@@ -1,4 +1,4 @@
-package edu.bluejack22_1.pillreminder
+package edu.bluejack22_1.pillreminder.controller.auth
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -57,6 +57,7 @@ class RegisterMain : AppCompatActivity() {
         binding.toLoginMainBtn.setOnClickListener {
             val intent = Intent(this, LoginMain::class.java)
             startActivity(intent)
+            finish()
         }
     }
 }

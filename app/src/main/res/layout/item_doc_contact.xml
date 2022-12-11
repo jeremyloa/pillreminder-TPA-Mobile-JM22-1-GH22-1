@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cvDoc"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="10dp"
+    android:layout_height="70dp"
+    android:layout_width="match_parent">
+
+    <LinearLayout
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:paddingHorizontal="15dp"
+            android:layout_width="match_parent"
+            android:clickable="true"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/docPhoto"
+                    android:layout_width="60dp"
+                    app:shapeAppearanceOverlay="@style/Circular"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+
+                    android:src="@drawable/ic_baseline_user_24"/>
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical"
+                android:paddingHorizontal="10dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/docName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:text="Test"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                    android:textColor="?attr/colorPrimaryVariant"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/docPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:text="test"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                    android:textColor="?attr/colorPrimaryVariant"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/docMail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:text="test"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                    android:textColor="?attr/colorPrimaryVariant"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+            <ImageView
+                android:id="@+id/docChat"
+                android:layout_width="100px"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                app:tint="?attr/colorPrimaryVariant"
+                android:paddingHorizontal="5dp"
+                android:src="@drawable/ic_baseline_chat_24"/>
+
+            <ImageView
+                android:id="@+id/docAppointment"
+                android:layout_width="100px"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:paddingHorizontal="5dp"
+                app:tint="?attr/colorPrimaryVariant"
+                android:src="@drawable/ic_baseline_appointment_24"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

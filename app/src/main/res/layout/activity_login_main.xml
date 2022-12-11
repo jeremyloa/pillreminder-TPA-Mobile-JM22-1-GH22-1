@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginMain">
+    tools:context=".controller.auth.LoginMain">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:fontFamily="@font/montserrat_semibold"
-                android:text="Account Login"
+                android:text="@string/account_login"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textColor="?attr/colorPrimaryVariant"
@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/lato"
-                android:hint="E-mail" />
+                android:hint="@string/email" />
 
             <EditText
                 android:id="@+id/loginPass"
@@ -65,7 +65,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/lato"
-                android:hint="Password"
+                android:hint="@string/password"
                 android:password="true" />
 
             <TextView
@@ -73,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-black"
-                android:text="Forgot Password"
+                android:text="@string/forgot_password"
                 android:clickable="true"
                 android:layout_marginTop="10dp"
                 android:textAlignment="center"
@@ -86,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:backgroundTint="?attr/colorPrimary"
-                android:text="Login with E-mail"
+                android:text="@string/login_with_e_mail"
                 android:textColor="@color/white" />
 
             <Button
@@ -95,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:backgroundTint="@color/white"
-                android:text="Login with Google"
+                android:text="@string/login_with_google"
                 android:textColor="@color/blue1"/>
 
             <Button
@@ -104,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:backgroundTint="?attr/colorSecondaryVariant"
-                android:text="Register"
+                android:text="@string/register"
                 android:textColor="@color/white" />
 
         </LinearLayout>

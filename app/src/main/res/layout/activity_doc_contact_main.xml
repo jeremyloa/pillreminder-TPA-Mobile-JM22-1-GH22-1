@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".controller.doctor.DocContactMain">
+
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/titleDocContactMain"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="?android:statusBarColor"
+            android:orientation="vertical">
+            <LinearLayout
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:text="@string/my_doctor_contact_list"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
+                    android:textColor="?attr/colorPrimaryVariant"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/toAddDoc"
+                    android:layout_width="40dp"
+                    android:clickable="true"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    app:tint="?attr/colorPrimaryVariant"
+                    android:src="@drawable/ic_baseline_add_24"/>
+
+            </LinearLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_below="@id/titleDocContactMain"
+            android:id="@+id/searchDocBar"
+            android:paddingHorizontal="20dp"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/searchDocText"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:textColor="?attr/colorPrimaryVariant"
+                android:fontFamily="@font/lato"
+                android:hint="@string/search_doctor_contact"
+                android:layout_height="wrap_content"/>
+
+            <ImageButton
+                android:id="@+id/searchDocBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/white_darker"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:src="@drawable/ic_baseline_search_24"
+                app:tint="@color/blue1" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_below="@id/searchDocBar"
+            android:layout_marginTop="10dp"
+            android:id="@+id/rvDoc"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content"/>
+
+
+</RelativeLayout>
