@@ -42,4 +42,7 @@
     <string name="my_appointment">My Appointment</string>
     <string name="search_doctor_contact">Search doctor contact</string>
     <string name="search_for_doctor_contact">Search for doctor contact</string>
+    <string name="doctor_details">Doctor Details</string>
+    <string name="add_doctor_contact">Add Doctor Contact</string>
+    <string name="update_doctor_contact">Update Doctor Contact</string>
 </resources>

@@ -62,7 +62,7 @@ class User(val role:String?, val uid:String?, val name:String?, val email:String
                     val temp =
                         User (
                             doc.data.get("role").toString(),
-                            doc.data.get("uid").toString(),
+                            doc.id,
                             doc.data.get("name").toString(),
                             doc.data.get("email").toString(),
                             doc.data.get("phone").toString(),

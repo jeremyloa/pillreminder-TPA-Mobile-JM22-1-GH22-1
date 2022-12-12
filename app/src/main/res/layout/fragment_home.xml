@@ -4,6 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:clickable="false"
+    android:focusable="false"
+    android:focusableInTouchMode="false"
     tools:context=".controller.main.Home">
 
     <LinearLayout
@@ -11,6 +14,9 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:paddingHorizontal="@dimen/activity_horizontal_margin"
         android:paddingVertical="@dimen/activity_vertical_margin">
 
@@ -19,6 +25,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_bold"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:text="@string/hello"
             android:textColor="?attr/colorPrimaryVariant"
             android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge" />
@@ -30,8 +39,6 @@
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
             app:cardBackgroundColor="?attr/colorPrimary"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
             android:clickable="true"
             app:cardUseCompatPadding="true">
             <LinearLayout
@@ -39,16 +46,11 @@
                 android:layout_height="match_parent"
                 android:paddingHorizontal="@dimen/activity_horizontal_margin"
                 android:paddingVertical="10dp"
-                android:clickable="false"
-                android:focusable="false"
                 android:orientation="horizontal">
                 <ImageView
                     android:layout_width="100px"
                     android:layout_height="100px"
                     android:src="@drawable/ic_baseline_view_timeline_24"
-                    android:clickable="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
                     app:tint="?attr/colorOnPrimary" />
 
                 <TextView
@@ -58,9 +60,6 @@
                     android:gravity="center"
                     android:text="@string/my_timeline"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                    android:clickable="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
                     android:textColor="?attr/colorOnPrimary"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -68,9 +67,7 @@
         <androidx.cardview.widget.CardView
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:id="@+id/toAppointment"
-            android:focusable="true"
             android:layout_width="match_parent"
-            android:focusableInTouchMode="true"
             android:layout_height="wrap_content"
             app:cardBackgroundColor="?attr/colorPrimary"
             app:cardElevation="0dp"
@@ -81,17 +78,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingHorizontal="@dimen/activity_horizontal_margin"
-                android:clickable="false"
-                android:focusable="false"
                 android:paddingVertical="10dp"
                 android:orientation="horizontal">
                 <ImageView
                     android:layout_width="100px"
                     android:layout_height="100px"
                     android:src="@drawable/ic_baseline_appointment_24"
-                    android:clickable="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
                     app:tint="?attr/colorOnPrimary" />
 
                 <TextView
@@ -100,9 +92,6 @@
                     android:fontFamily="@font/lato"
                     android:gravity="center"
                     android:text="@string/my_appointment"
-                    android:clickable="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textColor="?attr/colorOnPrimary"/>
             </LinearLayout>
@@ -115,24 +104,17 @@
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
             app:cardBackgroundColor="?attr/colorPrimary"
-            android:focusableInTouchMode="true"
             android:clickable="true"
-            android:focusable="true"
             app:cardUseCompatPadding="true">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingHorizontal="@dimen/activity_horizontal_margin"
                 android:paddingVertical="10dp"
-                android:clickable="false"
-                android:focusable="false"
                 android:orientation="horizontal">
                 <ImageView
                     android:layout_width="100px"
                     android:layout_height="100px"
-                    android:clickable="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
                     android:src="@drawable/ic_baseline_contacts_24"
                     app:tint="?attr/colorOnPrimary" />
 
@@ -140,9 +122,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/lato"
-                    android:clickable="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
                     android:gravity="center"
                     android:text="@string/my_doctor_contact_list"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"

@@ -6,32 +6,48 @@
     android:layout_height="match_parent"
     tools:context=".controller.doctor.DocContactSearch">
 
-
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:id="@+id/titleDocContactSearch"
             android:layout_centerHorizontal="true"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:backgroundTint="?android:statusBarColor"
             android:orientation="vertical">
             <LinearLayout
-                android:paddingLeft="30dp"
+                android:paddingLeft="20dp"
                 android:paddingRight="30dp"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
+                android:clickable="false"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <ImageView
+                    android:id="@+id/backButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_baseline_arrow_back_24"
+                    android:paddingHorizontal="10dp"
+                    app:tint="?attr/colorPrimaryVariant"
+                    android:clickable="true"/>
+
                 <TextView
                     android:layout_width="wrap_content"
-                    android:gravity="center_vertical"
-                    android:layout_weight="1"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:fontFamily="@font/montserrat_semibold"
+                    android:gravity="center_vertical"
                     android:text="@string/search_for_doctor_contact"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
                     android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
                     android:textColor="?attr/colorPrimaryVariant"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:ignore="RtlCompat" />
 
             </LinearLayout>
         </com.google.android.material.appbar.AppBarLayout>
@@ -40,6 +56,7 @@
             android:layout_width="match_parent"
             android:layout_below="@id/titleDocContactSearch"
             android:id="@+id/searchDocSearchBar"
+            android:paddingVertical="5dp"
             android:paddingHorizontal="20dp"
             android:orientation="horizontal"
             android:layout_height="wrap_content">
@@ -59,8 +76,6 @@
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/white_darker"
                 android:clickable="true"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
                 android:src="@drawable/ic_baseline_search_24"
                 app:tint="@color/blue1" />
 
@@ -72,5 +87,8 @@
             android:id="@+id/rvDocSearch"
             android:layout_width="match_parent"
             android:orientation="vertical"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:layout_height="wrap_content"/>
 </RelativeLayout>

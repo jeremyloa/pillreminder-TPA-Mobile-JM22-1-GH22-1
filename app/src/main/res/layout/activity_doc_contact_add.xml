@@ -4,13 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".controller.doctor.DocContactMain">
-
+    tools:context=".controller.doctor.DocContactAdd">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:id="@+id/titleDocContactMain"
+            android:id="@+id/titleDocContactAdd"
             android:layout_centerHorizontal="true"
             android:clickable="false"
             android:focusable="false"
@@ -44,62 +43,76 @@
                     android:clickable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
-                    android:text="@string/my_doctor_contact_list"
+                    android:text="@string/add_doctor_contact"
                     android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
                     android:textColor="?attr/colorPrimaryVariant"
                     android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/toAddDoc"
-                    android:layout_width="40dp"
-                    android:clickable="true"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    app:tint="?attr/colorPrimaryVariant"
-                    android:src="@drawable/ic_baseline_add_24"/>
-
             </LinearLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/logo"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+
+         <ImageView
+            android:layout_width="100dp"
+            android:layout_height="120dp"
+            android:src="@drawable/logo"
+            android:layout_marginTop="100dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_below="@id/logo"
+        android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_below="@id/titleDocContactMain"
-            android:id="@+id/searchDocBar"
-            android:paddingHorizontal="20dp"
-            android:paddingVertical="5dp"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/searchDocText"
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:textColor="?attr/colorPrimaryVariant"
+            <EditText
+                android:id="@+id/addDocName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/lato"
-                android:hint="@string/search_doctor_contact"
-                android:layout_height="wrap_content"/>
+                android:hint="@string/name" />
 
-            <ImageButton
-                android:id="@+id/searchDocBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:backgroundTint="@color/white_darker"
-                android:clickable="true"
-                android:src="@drawable/ic_baseline_search_24"
-                app:tint="@color/blue1" />
+            <EditText
+                android:id="@+id/addDocMail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/lato"
+                android:hint="@string/email" />
+
+            <EditText
+                android:id="@+id/addDocPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/lato"
+                android:hint="@string/phone_number"
+                android:phoneNumber="true" />
+
+            <Button
+                android:id="@+id/toAddDoc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="?attr/colorPrimary"
+                android:text="@string/add_doctor_contact"
+                android:textColor="?attr/colorOnPrimary" />
 
         </LinearLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_below="@id/searchDocBar"
-            android:layout_marginTop="10dp"
-            android:id="@+id/rvDoc"
-            android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:clickable="false"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:layout_height="wrap_content"/>
+    </LinearLayout>
 
 
 </RelativeLayout>

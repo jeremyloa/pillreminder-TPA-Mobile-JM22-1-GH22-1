@@ -15,6 +15,27 @@
         android:theme="@style/Theme.Pillreminder"
         tools:targetApi="31">
         <activity
+            android:name=".controller.doctor.DocContactUpdate"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".controller.doctor.DocContactAdd"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".controller.doctor.DocContactDetail"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".controller.doctor.DocContactSearch"
             android:exported="false">
             <meta-data

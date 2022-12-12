@@ -36,27 +36,25 @@ class Home : Fragment() {
     private var param2: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         DoctorContact.fetch_all_doctorcontacts_patientid()
-        binding = FragmentHomeBinding.inflate(layoutInflater)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+        super.onCreate(savedInstanceState)
+
+
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view: View = inflater!!.inflate(R.layout.fragment_home, container, false)
-        toTimeline = view.findViewById(R.id.toTimeline)
-        toAppointment = view.findViewById(R.id.toAppointment)
-
-        toDoctorContactList = view.findViewById(R.id.toDoctorContactList)
-
+        binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
+        toTimeline = binding.toTimeline
+        toAppointment = binding.toAppointment
+        toDoctorContactList = binding.toDoctorContactList
         toDoctorContactList.setOnClickListener {
-//            Log.i("TO_DOC_CTC_LIST", "pressed")
             startActivity(
                 Intent(
                     context,
@@ -64,7 +62,7 @@ class Home : Fragment() {
                 )
             )
         }
-        return view
+        return binding.root
     }
 
    companion object {
