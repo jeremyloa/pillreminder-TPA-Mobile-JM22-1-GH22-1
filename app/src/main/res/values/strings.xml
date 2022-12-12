@@ -45,4 +45,5 @@
     <string name="doctor_details">Doctor Details</string>
     <string name="add_doctor_contact">Add Doctor Contact</string>
     <string name="update_doctor_contact">Update Doctor Contact</string>
+    <string name="sign_out">Sign Out</string>
 </resources>

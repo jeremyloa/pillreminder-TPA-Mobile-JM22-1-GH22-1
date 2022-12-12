@@ -56,13 +56,11 @@ class DocContactAdd : AppCompatActivity() {
             else {
                 val user = User.get_user_email(mail)
                 if (user!=null) {
-                    if (DoctorContact.insert_doctorcontacts_patientid(name, phone, mail, user.uid.toString(), user.photo.toString()))
+                    DoctorContact.insert_doctorcontacts_patientid(name, phone, mail, user.uid.toString(), user.photo.toString())
                         Toast.makeText(this, "Add contact success. Your doctor has an account in pillreminder.", Toast.LENGTH_LONG).show()
-                    else Toast.makeText(this, "Add contact failed.", Toast.LENGTH_LONG).show()
                 } else {
-                    if (DoctorContact.insert_doctorcontacts_patientid(name, phone, mail, "unregistered", "unregistered"))
+                    DoctorContact.insert_doctorcontacts_patientid(name, phone, mail, "unregistered", "unregistered")
                         Toast.makeText(this, "Add contact success. Your doctor don't have an account in pillreminder.", Toast.LENGTH_LONG).show()
-                    else Toast.makeText(this, "Add contact failed.", Toast.LENGTH_LONG).show()
                 }
                 DoctorContact.fetch_all_doctorcontacts_patientid()
                 Handler(Looper.getMainLooper()).postDelayed({
