@@ -14,6 +14,7 @@ import edu.bluejack22_1.pillreminder.controller.Splash
 import edu.bluejack22_1.pillreminder.controller.doctor.DocContactMain
 import edu.bluejack22_1.pillreminder.databinding.FragmentHomeBinding
 import edu.bluejack22_1.pillreminder.model.DoctorContact
+import edu.bluejack22_1.pillreminder.model.MsgRoom
 import edu.bluejack22_1.pillreminder.model.User
 
 // TODO: Rename parameter arguments, choose names that match
@@ -30,7 +31,6 @@ class Home : Fragment() {
     private lateinit var binding: FragmentHomeBinding
 
     private lateinit var toTimeline: CardView
-    private lateinit var toAppointment: CardView
     private lateinit var toDoctorContactList: CardView
     private lateinit var toLogout: CardView
 
@@ -39,7 +39,9 @@ class Home : Fragment() {
     private var param2: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        User.relog()
         DoctorContact.fetch_all_doctorcontacts_patientid()
+        MsgRoom.fetch_all_msgrooms()
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
@@ -55,7 +57,6 @@ class Home : Fragment() {
     ): View? {
         binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
         toTimeline = binding.toTimeline
-        toAppointment = binding.toAppointment
         toDoctorContactList = binding.toDoctorContactList
         toDoctorContactList.setOnClickListener {
             startActivity(

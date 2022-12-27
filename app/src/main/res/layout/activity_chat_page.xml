@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".controller.chat.ChatPage"
+    android:orientation="vertical">
+
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/chatPageHead"
+            android:layout_centerHorizontal="true"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:backgroundTint="?android:statusBarColor"
+            android:orientation="vertical">
+            <LinearLayout
+                android:paddingLeft="20dp"
+                android:paddingRight="30dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:clickable="false"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/chatPageBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_baseline_arrow_back_24"
+                    android:paddingHorizontal="5dp"
+                    app:tint="?attr/colorPrimaryVariant"
+                    android:clickable="true"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/chatPagePhoto"
+                    android:layout_width="60dp"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    app:shapeAppearanceOverlay="@style/Circular"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:src="@drawable/logo"/>
+
+                <TextView
+                    android:id="@+id/chatPageName"
+                    android:layout_width="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:text="@string/chat_person"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
+                    android:textColor="?attr/colorPrimaryVariant"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_below="@+id/chatPageHead"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:id="@+id/rvChatPage"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:id="@+id/chatPageBox"
+            android:gravity="end"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                app:cardCornerRadius="10dp"
+                app:cardUseCompatPadding="true"
+                app:cardElevation="10dp"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="5dp"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/chatPageTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="?attr/colorPrimaryVariant"
+                        android:fontFamily="@font/lato"
+                        android:hint="@string/message"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageButton
+                        android:id="@+id/chatPageAttach"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/white_darker"
+                        android:clickable="true"
+                        android:src="@drawable/ic_baseline_attach_file_24"
+                        app:tint="@color/blue1" />
+
+                    <ImageButton
+                        android:id="@+id/chatPageSend"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/white_darker"
+                        android:clickable="true"
+                        android:src="@drawable/ic_baseline_send_24"
+                        app:tint="@color/blue1" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+</LinearLayout>

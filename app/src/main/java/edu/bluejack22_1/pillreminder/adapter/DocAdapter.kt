@@ -47,7 +47,9 @@ class DocAdapter(var docs: MutableList<DoctorContact>, var listener: DocClickLis
             docPhone = view.findViewById(R.id.docPhone)
             docMail = view.findViewById(R.id.docMail)
             docChat = view.findViewById(R.id.docChat)
+            docChat.setOnClickListener { listener.onDocChatClicked(adapterPosition) }
             docAppointment = view.findViewById(R.id.docAppointment)
+            docAppointment.setOnClickListener{ listener.onDocAppointmentClicked(adapterPosition) }
             cvDoc = view.findViewById(R.id.cvDoc)
             cvDoc.setOnClickListener { listener.onDocClicked(adapterPosition) }
         }
@@ -55,5 +57,7 @@ class DocAdapter(var docs: MutableList<DoctorContact>, var listener: DocClickLis
 
     interface DocClickListener{
         fun onDocClicked(pos: Int)
+        fun onDocChatClicked(pos: Int)
+        fun onDocAppointmentClicked(pos: Int)
     }
 }

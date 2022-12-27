@@ -3,7 +3,6 @@ package edu.bluejack22_1.pillreminder.controller.main
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.FrameLayout
-import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import edu.bluejack22_1.pillreminder.R
@@ -28,7 +27,7 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             R.id.navigation_treatments -> {
-                val fragment = Treatments.newInstance()
+                val fragment = Activities.newInstance()
                 loadFragment(fragment)
                 true
             }

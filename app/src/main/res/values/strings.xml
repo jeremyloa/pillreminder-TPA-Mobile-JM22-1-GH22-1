@@ -46,4 +46,8 @@
     <string name="add_doctor_contact">Add Doctor Contact</string>
     <string name="update_doctor_contact">Update Doctor Contact</string>
     <string name="sign_out">Sign Out</string>
+    <string name="activities">Activities</string>
+    <string name="the_quick_brown_fox_jumps_over_the_lazy_dog_the_quick_brown_fox_jumps_over_the_lazy_dog">The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.</string>
+    <string name="chat_person">Chat Person</string>
+    <string name="message">Message</string>
 </resources>

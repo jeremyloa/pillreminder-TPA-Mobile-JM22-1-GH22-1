@@ -13,6 +13,15 @@ class User(val role:String?, val uid:String?, val name:String?, val email:String
         var db = Firebase.firestore
         var auth = Firebase.auth
 
+        fun relog(){
+            db.collection("users").document(auth.currentUser!!.uid).addSnapshotListener{ ss, e->
+                if (e!=null) return@addSnapshotListener
+                if (ss!=null && ss.exists()) {
+                    curr = User(ss.data!!.get("role").toString(), ss.id, ss.data!!.get("name").toString(), ss.data!!.get("email").toString(), ss.data!!.get("phone").toString(), ss.data!!.get("photo").toString())
+                }
+            }
+        }
+
         fun login(uid: String) {
             db.collection("users").document(auth.currentUser!!.uid).addSnapshotListener{ ss, e->
                 if (e!=null) return@addSnapshotListener

@@ -13,5 +13,5 @@
     <item
         android:id="@+id/navigation_treatments"
         android:icon="@drawable/ic_baseline_medication_24"
-        android:title="@string/treatments" />
+        android:title="@string/activities" />
 </menu>
