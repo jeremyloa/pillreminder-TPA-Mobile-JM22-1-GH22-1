@@ -51,4 +51,28 @@
     <string name="chat_person">Chat Person</string>
     <string name="message">Message</string>
     <string name="search_recent_messages">Search recent messages</string>
+    <string name="search_for_message">Search for Message</string>
+    <string name="update_contact">Update Contact</string>
+    <string name="delete_contact">Delete Contact</string>
+
+    <string name="email_empty">E-mail should not be empty</string>
+    <string name="email_invalid">E-mail format is invalid</string>
+    <string name="pass_empty">Password should not be empty</string>
+    <string name="pass_invalid">Password should be at least 6 characters</string>
+    <string name="conf_empty">Confirmed password should not be empty</string>
+    <string name="conf_nomatch">Password and confirmed password should match</string>
+    <string name="auth_failed">Authentication failed</string>
+    <string name="name_empty">Name should not be empty</string>
+    <string name="phone_empty">Phone should not be empty</string>
+    <string name="role_empty">Role should be chosen</string>
+    <string name="register_success">You are now registered</string>
+    <string name="register_failed">Registration failed</string>
+    <string name="register_existed">User already existed</string>
+    <string name="doc_have_acc">Add contact success. Your doctor has an account in pillreminder.</string>
+    <string name="doc_no_acc">Add contact success. Your doctor have no account in pillreminder.</string>
+    <string name="del_con_success">Delete contact success</string>
+    <string name="update_con_success">Update contact success</string>
+    <string name="user_not_existed">User not existed</string>
+    <string name="reset_success">Reset password request sent</string>
+    <string name="reset_failed">Reset password request send failed</string>
 </resources>

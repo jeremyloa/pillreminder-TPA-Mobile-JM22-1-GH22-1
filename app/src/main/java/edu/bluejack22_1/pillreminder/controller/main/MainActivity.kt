@@ -1,5 +1,6 @@
 package edu.bluejack22_1.pillreminder.controller.main
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.FrameLayout
@@ -9,6 +10,23 @@ import edu.bluejack22_1.pillreminder.R
 import edu.bluejack22_1.pillreminder.model.User
 
 class MainActivity : AppCompatActivity() {
+    companion object {
+        fun getLocalizedString(context: Context, resourceId: Int): String {
+            val config = context.resources.configuration
+            val langCode = config.locales[0].language
+            val regionCode = config.locales[0].country
+            val message:String = when {
+                langCode == "in" && regionCode == "ID" -> {
+                    context.resources.getString(resourceId)
+                }
+                else -> {
+                    context.resources.getString(resourceId)
+                }
+            }
+            return message
+        }
+    }
+
     private var content: FrameLayout? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         User.relog()

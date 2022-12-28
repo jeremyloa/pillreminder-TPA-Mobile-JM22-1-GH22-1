@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.squareup.picasso.Picasso
+import edu.bluejack22_1.pillreminder.R
 import edu.bluejack22_1.pillreminder.databinding.ActivityDocContactDetailBinding
 import edu.bluejack22_1.pillreminder.model.DoctorContact
 
@@ -74,7 +75,7 @@ class DocContactDetail : AppCompatActivity() {
         }
         toDeleteDocContact.setOnClickListener{
             DoctorContact.delete_doctorcontacts_documentid(doc.documentid.toString())
-            Toast.makeText(this, "Delete contact success.", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, resources.getString(R.string.del_con_success), Toast.LENGTH_LONG).show()
             DoctorContact.fetch_all_doctorcontacts_patientid()
             Handler(Looper.getMainLooper()).postDelayed({
                 finish()

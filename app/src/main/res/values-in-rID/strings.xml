@@ -1,0 +1,78 @@
+<resources>
+    <string name="app_name" translatable="false">pillreminder</string>
+
+    <string name="name">Nama</string>
+    <string name="email">Surel</string>
+    <string name="password">Kata sandi</string>
+    <string name="confirm_password">Konfirmasi sandi</string>
+    <string name="phone_number">Nomor telepon</string>
+
+    <string name="account_registration">Registrasi Akun</string>
+    <string name="register_with_e_mail">Daftar dengan Email</string>
+    <string name="register_with_google">Daftar dengan Google</string>
+    <string name="register_using_email">Daftar menggunakan Email</string>
+    <string name="register">Daftar</string>
+
+    <string name="account_login">Akun Masuk</string>
+    <string name="login_with_e_mail">Masuk dengan Email</string>
+    <string name="login_with_google">Masuk dengan Google</string>
+    <string name="forgot_password">Tidak ingat kata sandi</string>
+    <string name="login">Gabung</string>
+
+    <string name="send_reset_password_request">Kirim Permintaan Atur Ulang Kata Sandi</string>
+    <string name="reset_pass_token">Setel Ulang Token Kata Sandi</string>
+    <string name="token">Token</string>
+    <string name="validate_reset_pass_token">Validasi Reset Kata Sandi Token</string>
+    <string name="set_new_pass">Tetapkan Kata Sandi Baru</string>
+
+    <string name="logout">Keluar</string>
+
+    <string name="my_doctor_contact_list">Daftar Kontak Dokter Saya</string>
+    <string name="title_activity_main">Aktifitas utama</string>
+    <string name="title_home">Rumah</string>
+    <string name="title_dashboard">Dasbor</string>
+    <string name="title_notifications">Notifikasi</string>
+    <string name="messages">Pesan</string>
+    <string name="home">Rumah</string>
+    <string name="treatments">Perawatan</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Halo fragmen kosong</string>
+    <string name="hello">Halo</string>
+    <string name="my_timeline">Jadwal saya</string>
+    <string name="my_appointment">Janji Saya</string>
+    <string name="search_doctor_contact">Cari kontak dokter</string>
+    <string name="search_for_doctor_contact">Cari kontak dokter</string>
+    <string name="doctor_details">Detail Dokter</string>
+    <string name="add_doctor_contact">Tambahkan Kontak Dokter</string>
+    <string name="update_doctor_contact">Perbarui Kontak Dokter</string>
+    <string name="sign_out">Keluar</string>
+    <string name="activities">Kegiatan</string>
+    <string name="the_quick_brown_fox_jumps_over_the_lazy_dog_the_quick_brown_fox_jumps_over_the_lazy_dog">Rubah coklat cepat melompati anjing malas. Rubah coklat cepat melompati anjing malas.</string>
+    <string name="chat_person">Orang Obrolan</string>
+    <string name="message">Pesan</string>
+    <string name="search_recent_messages">Telusuri pesan terbaru</string>
+    <string name="search_for_message">Cari Pesan</string>
+    <string name="update_contact">Perbarui Kontak</string>
+    <string name="delete_contact">Hapus kontak</string>
+
+    <string name="email_empty">Email tidak boleh kosong</string>
+    <string name="email_invalid">Format email tidak valid</string>
+    <string name="pass_empty">Kata sandi tidak boleh kosong</string>
+    <string name="pass_invalid">Kata sandi harus minimal 6 karakter</string>
+    <string name="conf_empty">Kata sandi yang dikonfirmasi tidak boleh kosong</string>
+    <string name="conf_nomatch">Kata sandi dan kata sandi yang dikonfirmasi harus cocok</string>
+    <string name="auth_failed">Otentikasi gagal</string>
+    <string name="name_empty">Nama wajib diisi</string>
+    <string name="phone_empty">Telepon tidak boleh kosong</string>
+    <string name="role_empty">Peran harus dipilih</string>
+    <string name="register_success">Anda sekarang terdaftar</string>
+    <string name="register_failed">Registrasi gagal</string>
+    <string name="register_existed">Pengguna sudah ada</string>
+    <string name="doc_have_acc">Tambahkan kontak sukses. Dokter Anda memiliki akun di aplikasi ini.</string>
+    <string name="doc_no_acc">Tambahkan kontak sukses. Dokter Anda tidak memiliki akun di aplikasi ini.</string>
+    <string name="del_con_success">Hapus kontak berhasil</string>
+    <string name="update_con_success">Ubah kontak berhasil</string>
+    <string name="user_not_existed">Pengguna belum terdaftar</string>
+    <string name="reset_success">Permintaan ubah password terkirim</string>
+    <string name="reset_failed">Permintaan ubah password tidak terkirim</string>
+</resources>

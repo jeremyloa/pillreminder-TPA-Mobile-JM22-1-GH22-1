@@ -8,6 +8,7 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import edu.bluejack22_1.pillreminder.R
 import edu.bluejack22_1.pillreminder.controller.main.MainActivity
 import edu.bluejack22_1.pillreminder.databinding.ActivityLoginMainBinding
 import edu.bluejack22_1.pillreminder.model.DoctorContact
@@ -35,8 +36,8 @@ class LoginMain : AppCompatActivity() {
     private fun validate(): String{
         email = binding.loginMail.text.toString()
         pass = binding.loginPass.text.toString()
-        if (email.isBlank()) return "E-mail should not be empty"
-        if (pass.isBlank()) return "Password should not be empty"
+        if (email.isBlank()) return resources.getString(R.string.email_empty)
+        if (pass.isBlank()) return resources.getString(R.string.pass_empty)
         return ""
     }
 
@@ -57,7 +58,7 @@ class LoginMain : AppCompatActivity() {
                     finish()
                 } else {
                     Log.w("Login Firebase", "signInWithEmail:failure", task.exception)
-                    Toast.makeText(this, "Authentication failed.",
+                    Toast.makeText(this, resources.getString(R.string.auth_failed),
                             Toast.LENGTH_SHORT).show()
                 }
                 }

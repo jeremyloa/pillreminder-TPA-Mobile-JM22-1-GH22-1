@@ -29,19 +29,21 @@ import edu.bluejack22_1.pillreminder.model.User
 import java.util.*
 
 class ChatPage : AppCompatActivity(), MsgAdapter.MsgListener {
-
+    companion object{
+        var msgs: MutableList<Msg> = mutableListOf()
+        lateinit var layoutManager: LinearLayoutManager
+    }
    private lateinit var binding: ActivityChatPageBinding
    private lateinit var msgAdapter: MsgAdapter
-   private var msgs: MutableList<Msg> = mutableListOf()
    private lateinit var db: FirebaseFirestore
    private lateinit var storage: FirebaseStorage
    private lateinit var opponent: User
    private lateinit var chatroom: MsgRoom
-   private val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
     private lateinit var sendImgLink: String
    private var sendImg = false
    private lateinit var chatPageBack: ImageView
+   private lateinit var chatPageSearch: ImageView
    private lateinit var chatPageName: TextView
    private lateinit var chatPagePhoto: ShapeableImageView
    private lateinit var rvChatPage: RecyclerView
@@ -51,6 +53,7 @@ class ChatPage : AppCompatActivity(), MsgAdapter.MsgListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         db = Firebase.firestore
         storage = Firebase.storage
         binding = ActivityChatPageBinding.inflate(layoutInflater)
@@ -75,6 +78,10 @@ class ChatPage : AppCompatActivity(), MsgAdapter.MsgListener {
         Picasso.get().load(opponent.photo).into(chatPagePhoto)
         chatPagePhoto.setOnClickListener{
             goProfile(doctorid)
+        }
+        chatPageSearch = binding.chatPageSearch
+        chatPageSearch.setOnClickListener{
+            startActivity(Intent(this, ChatSearch::class.java))
         }
         rvChatPage = binding.rvChatPage
         chatPageTxt = binding.chatPageTxt
@@ -157,13 +164,15 @@ class ChatPage : AppCompatActivity(), MsgAdapter.MsgListener {
     }
 
     private fun goProfile(doctorid: String){
-        var intent = Intent(this, DocContactDetail::class.java)
-        intent.putExtra("doctorcontact", DoctorContact.get_doctorcontacts_doctorid(doctorid))
-        startActivity(intent)
+        if (User.curr.role!="doctors"){
+            var intent = Intent(this, DocContactDetail::class.java)
+            intent.putExtra("doctorcontact", DoctorContact.get_doctorcontacts_doctorid(doctorid))
+            startActivity(intent)
+        }
     }
 
     override fun orMsgClicked(pos: Int) {
-        TODO("Not yet implemented")
+
     }
 
 //    fun init_msgs(){

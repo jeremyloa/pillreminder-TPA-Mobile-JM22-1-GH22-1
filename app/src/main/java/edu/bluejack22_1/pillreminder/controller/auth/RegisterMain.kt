@@ -4,9 +4,19 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.firebase.auth.FirebaseAuth
+import edu.bluejack22_1.pillreminder.R
 import edu.bluejack22_1.pillreminder.databinding.ActivityRegisterMainBinding
 
 class RegisterMain : AppCompatActivity() {
+    private val auth = FirebaseAuth.getInstance()
+//    private val gso:GoogleSignInOptions = GoogleSignInOptions
+//        .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+//        .requestIdToken(getString(R.string.default_web_client_id))
+//        .requestEmail()
+//        .build()
+//    val Req_Code: Int = 123
 
     private lateinit var binding: ActivityRegisterMainBinding
 
@@ -23,9 +33,9 @@ class RegisterMain : AppCompatActivity() {
         val name = binding.regisName.text.toString()
         val phone = binding.regisPhone.text.toString()
         val role = binding.regisRole.selectedItem.toString()
-        if (name.isBlank()) return "Name should not be empty"
-        if (phone.isBlank()) return "Phone should not be empty"
-        if (role.isBlank()) return "Role should be chosen"
+        if (name.isBlank()) return resources.getString(R.string.name_empty)
+        if (phone.isBlank()) return resources.getString(R.string.phone_empty)
+        if (role.isBlank()) return resources.getString(R.string.role_empty)
         return ""
     }
 

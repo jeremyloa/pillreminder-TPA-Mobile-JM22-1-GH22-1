@@ -42,6 +42,9 @@ class MsgAdapter(var currMsg: MutableList<Msg>, var listener: MsgListener): Recy
                 viewHolder.binding.sendText.text = currMsg[position].ctn
             }
             viewHolder.binding.sendTime.text = dateFormat.format(currMsg[position].sent!!.toDate()).toString()
+            viewHolder.binding.sendCard.setOnClickListener{
+                listener.orMsgClicked(position)
+            }
         } else {
             val viewHolder = holder as ItemChatRecHolder
             if (msg.type.equals("photo")) {
@@ -49,9 +52,14 @@ class MsgAdapter(var currMsg: MutableList<Msg>, var listener: MsgListener): Recy
                 viewHolder.binding.recText.visibility = View.GONE
                 Picasso.get().load(currMsg[position].ctn).into(viewHolder.binding.recImg)
             } else {
+                viewHolder.binding.recImg.visibility = View.GONE
+                viewHolder.binding.recText.visibility = View.VISIBLE
                 viewHolder.binding.recText.text = currMsg[position].ctn
             }
             viewHolder.binding.recTime.text = dateFormat.format(currMsg[position].sent!!.toDate()).toString()
+            viewHolder.binding.recCard.setOnClickListener{
+                listener.orMsgClicked(position)
+            }
         }
     }
 

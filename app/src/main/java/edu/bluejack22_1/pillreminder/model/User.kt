@@ -39,7 +39,7 @@ class User(val role:String?, val uid:String?, val name:String?, val email:String
         }
 
         fun register(role:String, email: String, pass: String, name: String, phone: String): Boolean {
-            var cek = false
+            var cek = true
             auth.createUserWithEmailAndPassword(email, pass)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -52,12 +52,17 @@ class User(val role:String?, val uid:String?, val name:String?, val email:String
                         "phone" to phone,
                         "photo" to "https://i.pravatar.cc/150?u=" + user!!.uid
                     )
-                    db.collection("users").document(user!!.uid).set(addDoc).addOnSuccessListener { cek = true }.addOnFailureListener { cek = false }
+                    db.collection("users").document(user!!.uid).set(addDoc).addOnSuccessListener {
+                        fetch_all_users()
+                        cek = true
+                    }.addOnFailureListener {
+                        cek = false
+                    }
                 } else {
                    cek = false
                 }
             }
-            if (cek) fetch_all_users()
+//            if (cek) fetch_all_users()
             return cek
         }
 

@@ -42,10 +42,10 @@ class DocContactAdd : AppCompatActivity() {
         name = addDocName.text.toString()
         mail = addDocMail.text.toString()
         phone = addDocPhone.text.toString()
-        if (mail.isBlank()) return "E-mail should not be empty"
-        if (!Patterns.EMAIL_ADDRESS.matcher(mail).matches()) return "E-mail format is invalid"
-        if (name.isBlank()) return "Name should not be empty"
-        if (phone.isBlank()) return "Phone should not be empty"
+        if (mail.isBlank()) return resources.getString(R.string.email_empty)
+        if (!Patterns.EMAIL_ADDRESS.matcher(mail).matches()) return resources.getString(R.string.email_invalid)
+        if (name.isBlank()) return resources.getString(R.string.name_empty)
+        if (phone.isBlank()) return resources.getString(R.string.phone_empty)
         return ""
     }
 
@@ -57,10 +57,10 @@ class DocContactAdd : AppCompatActivity() {
                 val user = User.get_user_email(mail)
                 if (user!=null) {
                     DoctorContact.insert_doctorcontacts_patientid(name, phone, mail, user.uid.toString(), user.photo.toString())
-                        Toast.makeText(this, "Add contact success. Your doctor has an account in pillreminder.", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, resources.getString(R.string.doc_have_acc), Toast.LENGTH_LONG).show()
                 } else {
                     DoctorContact.insert_doctorcontacts_patientid(name, phone, mail, "unregistered", "unregistered")
-                        Toast.makeText(this, "Add contact success. Your doctor don't have an account in pillreminder.", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, resources.getString(R.string.doc_no_acc), Toast.LENGTH_LONG).show()
                 }
                 DoctorContact.fetch_all_doctorcontacts_patientid()
                 Handler(Looper.getMainLooper()).postDelayed({

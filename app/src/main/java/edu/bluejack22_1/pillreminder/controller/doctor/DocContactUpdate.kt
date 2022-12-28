@@ -48,8 +48,8 @@ class DocContactUpdate : AppCompatActivity() {
     private fun frontVal(): String {
         name = updateDocName.text.toString()
         phone = updateDocPhone.text.toString()
-        if (name.isBlank()) return "Name should not be empty"
-        if (phone.isBlank()) return "Phone should not be empty"
+        if (name.isBlank()) return resources.getString(R.string.name_empty)
+        if (phone.isBlank()) return resources.getString(R.string.phone_empty)
         return ""
     }
 
@@ -59,7 +59,7 @@ class DocContactUpdate : AppCompatActivity() {
             if (res.isNotEmpty()) Toast.makeText(this, res, Toast.LENGTH_SHORT).show()
             else {
                 DoctorContact.update_doctorcontacts_documentid(doc.documentid.toString(), name, phone)
-                Toast.makeText(this, "Update contact success.", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, resources.getString(R.string.update_con_success), Toast.LENGTH_LONG).show()
                 DoctorContact.fetch_all_doctorcontacts_patientid()
                 Handler(Looper.getMainLooper()).postDelayed({
                     finish()

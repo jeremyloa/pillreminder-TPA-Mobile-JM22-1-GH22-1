@@ -59,6 +59,7 @@ class Home : Fragment() {
         binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
         toTimeline = binding.toTimeline
         toDoctorContactList = binding.toDoctorContactList
+        if (User.curr.role=="doctors") toDoctorContactList.visibility = View.GONE
         toDoctorContactList.setOnClickListener {
             startActivity(
                 Intent(

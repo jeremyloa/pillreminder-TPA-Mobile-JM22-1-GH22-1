@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".controller.chat.ChatSearch">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/chatSearchHead"
+            android:layout_centerHorizontal="true"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:backgroundTint="?android:statusBarColor"
+            android:orientation="vertical">
+            <LinearLayout
+                android:paddingLeft="20dp"
+                android:paddingRight="30dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:clickable="false"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/backButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_baseline_arrow_back_24"
+                    android:paddingHorizontal="10dp"
+                    app:tint="?attr/colorPrimaryVariant"
+                    android:clickable="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:gravity="center_vertical"
+                    android:text="@string/search_for_message"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
+                    android:textColor="?attr/colorPrimaryVariant"
+                    android:textStyle="bold"
+                    tools:ignore="RtlCompat" />
+
+            </LinearLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_below="@id/chatSearchHead"
+            android:id="@+id/chatSearchBar"
+            android:paddingVertical="5dp"
+            android:paddingHorizontal="20dp"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/chatSearchTxt"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:textColor="?attr/colorPrimaryVariant"
+                android:fontFamily="@font/lato"
+                android:hint="@string/search_for_message"
+                android:layout_height="wrap_content"/>
+
+            <ImageButton
+                android:id="@+id/chatSearchBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/white_darker"
+                android:clickable="true"
+                android:src="@drawable/ic_baseline_search_24"
+                app:tint="@color/blue1" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_below="@id/chatSearchBar"
+            android:layout_marginTop="10dp"
+            android:id="@+id/rvChatSearch"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:layout_height="wrap_content"/>
+</RelativeLayout>

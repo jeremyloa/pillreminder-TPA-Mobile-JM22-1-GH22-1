@@ -143,7 +143,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/colorPrimary"
-                android:text="Update Contact"
+                android:text="@string/update_contact"
                 android:textColor="@color/white" />
 
              <Button
@@ -151,7 +151,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/colorPrimaryVariant"
-                android:text="Delete Contact"
+                android:text="@string/delete_contact"
                 android:textColor="@color/white" />
 
         </LinearLayout>

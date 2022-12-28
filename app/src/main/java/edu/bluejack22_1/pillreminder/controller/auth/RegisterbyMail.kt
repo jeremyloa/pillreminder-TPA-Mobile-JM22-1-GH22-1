@@ -11,6 +11,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import edu.bluejack22_1.pillreminder.R
 import edu.bluejack22_1.pillreminder.databinding.ActivityRegisterbymailBinding
 import edu.bluejack22_1.pillreminder.model.User
 
@@ -35,12 +36,12 @@ class RegisterbyMail : AppCompatActivity() {
         val mail = binding.regisMail.text.toString()
         val pass = binding.regisPass.text.toString()
         val confpass = binding.regisConfPass.text.toString()
-        if (mail.isBlank()) return "E-mail should not be empty"
-        if (!Patterns.EMAIL_ADDRESS.matcher(mail).matches()) return "E-mail format is invalid"
-        if (pass.isBlank()) return "Password should not be empty"
-        if (pass.length <6) return "Password length should be at least 6 characters"
-        if (confpass.isBlank()) return "Confirmed password should not be empty"
-        if (!pass.equals(confpass)) return "Password and confirmed password should be the same"
+        if (mail.isBlank()) return resources.getString(R.string.email_empty)
+        if (!Patterns.EMAIL_ADDRESS.matcher(mail).matches()) return resources.getString(R.string.email_invalid)
+        if (pass.isBlank()) return resources.getString(R.string.pass_empty)
+        if (pass.length <6) return resources.getString(R.string.pass_invalid)
+        if (confpass.isBlank()) return resources.getString(R.string.conf_empty)
+        if (!pass.equals(confpass)) return resources.getString(R.string.conf_nomatch)
         return ""
     }
 
@@ -59,15 +60,15 @@ class RegisterbyMail : AppCompatActivity() {
                     Log.d("Register Firebase", "Checked not exist")
                     val reg = User.register(rol, email, pass, name.toString(), phone.toString())
                     if (reg) {
-                        Toast.makeText(this, "You are now registered.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, resources.getString(R.string.register_success), Toast.LENGTH_SHORT).show()
                         User.logout()
                         startActivity(Intent(this, LoginMain::class.java))
                         finish()
                     } else {
-                        Toast.makeText(this, "Registration failed", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, resources.getString(R.string.register_failed), Toast.LENGTH_SHORT).show()
                     }
                 } else {
-                    Toast.makeText(this, "User already existed", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, resources.getString(R.string.register_existed), Toast.LENGTH_SHORT).show()
                 }
             }
         }
