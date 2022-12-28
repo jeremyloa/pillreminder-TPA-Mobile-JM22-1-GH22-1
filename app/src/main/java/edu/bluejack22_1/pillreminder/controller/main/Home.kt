@@ -41,6 +41,7 @@ class Home : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         User.relog()
         DoctorContact.fetch_all_doctorcontacts_patientid()
+        MsgRoom.allMsgRoom.clear()
         MsgRoom.fetch_all_msgrooms()
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)

@@ -2,20 +2,22 @@ package edu.bluejack22_1.pillreminder.model
 
 import android.util.Log
 import com.google.firebase.Timestamp
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import edu.bluejack22_1.pillreminder.controller.chat.ChatPage
 import java.io.Serializable
 
-class Msg (val documentid:String, val chatroomid:String, val ctn:String, val sender:String, val sent:Timestamp, val type:String):
-    Serializable {
+class Msg: Serializable {
     companion object{
         var db = Firebase.firestore
 //        var currMsg: MutableList<Msg> = mutableListOf()
 //
-//        fun fetch_all_msg(chatroomid: String){
+//        fun fetch_curr_msg(chatroomid: String){
 //            currMsg.clear()
 //            db.collection("chatmessages")
 //            .whereEqualTo("chatroomid", chatroomid)
+//            .orderBy("sent")
 //            .get()
 //            .addOnSuccessListener { docs ->
 //                for (doc in docs) {
@@ -35,12 +37,13 @@ class Msg (val documentid:String, val chatroomid:String, val ctn:String, val sen
 //                    }
 //
 //                }
+//                ChatPage.msgAdapter.notifyDataSetChanged()
 //            }
 //            .addOnFailureListener { e ->
 //                Log.e("GET_MSGS", e.toString())
 //            }
 //        }
-//
+
         fun insert_msg(chatroomid:String, ctn:String, type:String): Boolean{
             var cek = false
             val addDoc = hashMapOf(
@@ -50,10 +53,31 @@ class Msg (val documentid:String, val chatroomid:String, val ctn:String, val sen
                 "sent" to Timestamp.now(),
                 "type" to type
             )
-            db.collection("chatmessages").add(addDoc).addOnSuccessListener { cek = true }.addOnFailureListener { cek = false }
-            MsgRoom.update_msgroom(chatroomid, Timestamp.now(), ctn)
+            db.collection("chatmessages").add(addDoc)
+                .addOnSuccessListener {
+                    MsgRoom.update_msgroom(chatroomid, Timestamp.now(), ctn)
+//                    fetch_curr_msg(chatroomid)
+                }
+                .addOnFailureListener { cek = false }
             return cek
         }
 //
+    }
+
+    var documentid:String? = null
+    var chatroomid:String? = null
+    var ctn:String? = null
+    var sender:String? = null
+    var sent:Timestamp? = null
+    var type:String? = null
+
+    constructor()
+    constructor(documentid:String, chatroomid:String, ctn:String, sender:String, sent:Timestamp, type:String) {
+        this.documentid = documentid
+        this.chatroomid = chatroomid
+        this.ctn = ctn
+        this.sender = sender
+        this.sent = sent
+        this.type = type
     }
 }

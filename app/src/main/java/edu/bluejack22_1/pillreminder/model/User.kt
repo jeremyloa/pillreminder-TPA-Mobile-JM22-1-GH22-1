@@ -9,9 +9,9 @@ import com.google.firebase.ktx.Firebase
 
 class User(val role:String?, val uid:String?, val name:String?, val email:String?, val phone:String?, val photo:String?) {
     companion object {
-        lateinit var curr: User
         var db = Firebase.firestore
         var auth = Firebase.auth
+        lateinit var curr: User
 
         fun relog(){
             db.collection("users").document(auth.currentUser!!.uid).addSnapshotListener{ ss, e->

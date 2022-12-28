@@ -6,10 +6,12 @@ import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import edu.bluejack22_1.pillreminder.R
+import edu.bluejack22_1.pillreminder.model.User
 
 class MainActivity : AppCompatActivity() {
     private var content: FrameLayout? = null
     override fun onCreate(savedInstanceState: Bundle?) {
+        User.relog()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         var nav: BottomNavigationView = findViewById(R.id.navigation)

@@ -50,4 +50,5 @@
     <string name="the_quick_brown_fox_jumps_over_the_lazy_dog_the_quick_brown_fox_jumps_over_the_lazy_dog">The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.</string>
     <string name="chat_person">Chat Person</string>
     <string name="message">Message</string>
+    <string name="search_recent_messages">Search recent messages</string>
 </resources>

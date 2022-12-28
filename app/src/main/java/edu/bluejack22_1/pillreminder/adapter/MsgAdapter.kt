@@ -1,6 +1,5 @@
 package edu.bluejack22_1.pillreminder.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,29 +10,53 @@ import edu.bluejack22_1.pillreminder.databinding.ItemChatRecBinding
 import edu.bluejack22_1.pillreminder.databinding.ItemChatSendBinding
 import edu.bluejack22_1.pillreminder.model.Msg
 import edu.bluejack22_1.pillreminder.model.User
+import java.text.SimpleDateFormat
 
-class MsgAdapter (var ctx: Context, msgs:MutableList<Msg>): RecyclerView.Adapter<RecyclerView.ViewHolder?>() {
+class MsgAdapter(var currMsg: MutableList<Msg>, var listener: MsgListener): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    lateinit var msgs:MutableList<Msg>
+    val dateFormat: SimpleDateFormat = SimpleDateFormat("HH:mm")
     val ITEM_SENT = 1
     val ITEM_RECEIVE = 2
 
-    inner class ItemChatSendHolder (itemView:View):RecyclerView.ViewHolder(itemView){
-        var binding:ItemChatSendBinding = ItemChatSendBinding.bind(itemView)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+         return if (viewType==ITEM_SENT) {
+            val view:View = LayoutInflater.from(parent.context).inflate(R.layout.item_chat_send, parent, false)
+            ItemChatSendHolder(view, listener)
+        } else {
+            val view:View = LayoutInflater.from(parent.context).inflate(R.layout.item_chat_rec, parent, false)
+            ItemChatRecHolder(view, listener)
+        }
     }
 
-    inner class ItemChatRecHolder (itemView:View):RecyclerView.ViewHolder(itemView){
-        var binding:ItemChatRecBinding = ItemChatRecBinding.bind(itemView)
-    }
-
-    init {
-        if (!msgs.isNullOrEmpty()){
-            this.msgs = msgs
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        val msg = currMsg[position]
+        if (holder.javaClass ==  ItemChatSendHolder::class.java) {
+            val viewHolder = holder as ItemChatSendHolder
+            if (msg.type.equals("photo")) {
+                viewHolder.binding.sendImg.visibility = View.VISIBLE
+                viewHolder.binding.sendText.visibility = View.GONE
+                Picasso.get().load(currMsg[position].ctn).into(viewHolder.binding.sendImg)
+            } else {
+                viewHolder.binding.sendImg.visibility = View.GONE
+                viewHolder.binding.sendText.visibility = View.VISIBLE
+                viewHolder.binding.sendText.text = currMsg[position].ctn
+            }
+            viewHolder.binding.sendTime.text = dateFormat.format(currMsg[position].sent!!.toDate()).toString()
+        } else {
+            val viewHolder = holder as ItemChatRecHolder
+            if (msg.type.equals("photo")) {
+                viewHolder.binding.recImg.visibility = View.VISIBLE
+                viewHolder.binding.recText.visibility = View.GONE
+                Picasso.get().load(currMsg[position].ctn).into(viewHolder.binding.recImg)
+            } else {
+                viewHolder.binding.recText.text = currMsg[position].ctn
+            }
+            viewHolder.binding.recTime.text = dateFormat.format(currMsg[position].sent!!.toDate()).toString()
         }
     }
 
     override fun getItemViewType(position: Int): Int {
-        val msg = msgs[position]
+        val msg = currMsg[position]
         return if (User.curr.uid == msg.sender) {
             ITEM_SENT
         } else {
@@ -41,42 +64,19 @@ class MsgAdapter (var ctx: Context, msgs:MutableList<Msg>): RecyclerView.Adapter
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return if (viewType==ITEM_SENT) {
-            val view:View = LayoutInflater.from(ctx).inflate(R.layout.item_chat_send, parent, false)
-            ItemChatSendHolder(view)
-        } else {
-            val view:View = LayoutInflater.from(ctx).inflate(R.layout.item_chat_rec, parent, false)
-            ItemChatRecHolder(view)
-        }
+    override fun getItemCount(): Int = currMsg.size
+
+
+    inner class ItemChatSendHolder(view: View, listener: MsgListener): RecyclerView.ViewHolder(view) {
+        var binding:ItemChatSendBinding = ItemChatSendBinding.bind(itemView)
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val msg = msgs[position]
-        if (holder.javaClass ==  ItemChatSendHolder::class.java) {
-            val viewHolder = holder as ItemChatSendHolder
-            if (msg.type.equals("photo")) {
-                viewHolder.binding.sendImg.visibility = View.VISIBLE
-                viewHolder.binding.sendText.visibility = View.GONE
-                Picasso.get().load(msgs[position].ctn).into(viewHolder.binding.sendImg)
-            } else {
-                viewHolder.binding.sendText.text = msgs[position].ctn
-            }
-            viewHolder.binding.sendTime.text = msgs[position].ctn
-        } else {
-            val viewHolder = holder as ItemChatRecHolder
-            if (msg.type.equals("photo")) {
-                viewHolder.binding.recImg.visibility = View.VISIBLE
-                viewHolder.binding.recText.visibility = View.GONE
-                Picasso.get().load(msgs[position].ctn).into(viewHolder.binding.recImg)
-            } else {
-                viewHolder.binding.recText.text = msgs[position].ctn
-            }
-            viewHolder.binding.recTime.text = msgs[position].ctn
-        }
+    inner class ItemChatRecHolder(view: View, listener: MsgListener): RecyclerView.ViewHolder(view) {
+        var binding:ItemChatRecBinding = ItemChatRecBinding.bind(itemView)
     }
 
-    override fun getItemCount(): Int  = msgs.size
-
+    interface MsgListener {
+        fun orMsgClicked(pos: Int)
+    }
 
 }

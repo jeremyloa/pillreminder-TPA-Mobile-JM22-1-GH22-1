@@ -83,5 +83,12 @@ class DoctorContact (val documentid:String?, val doctorid:String?, val patientid
                                     )}
             return dc
         }
+
+        fun get_doctorcontacts_doctorid(doctorid: String): DoctorContact?{
+            for (doc in allDoctorCon){
+                if (doc.doctorid.equals(doctorid)) return doc
+            }
+            return null
+        }
     }
 }
