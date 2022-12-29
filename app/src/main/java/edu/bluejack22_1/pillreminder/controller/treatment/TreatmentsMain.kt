@@ -1,4 +1,4 @@
-package edu.bluejack22_1.pillreminder.controller.main
+package edu.bluejack22_1.pillreminder.controller.treatment
 
 import android.os.Bundle
 import android.util.Log
@@ -7,8 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
 import edu.bluejack22_1.pillreminder.R
 import edu.bluejack22_1.pillreminder.adapter.ActivityAdapter
 
@@ -19,13 +17,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [Activities.newInstance] factory method to
+ * Use the [Treatments.newInstance] factory method to
  * create an instance of this fragment.
  */
-class Activities : Fragment() {
-    private lateinit var vpActivities: ViewPager2
-    private lateinit var tabActivities: TabLayout
-    private lateinit var adapter: ActivityAdapter
+class TreatmentsMain : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -42,23 +37,29 @@ class Activities : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_activities, container, false)
-        vpActivities = view.findViewById(R.id.vpActivities)
-        return view
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_treatments_main, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        adapter = ActivityAdapter(this)
-        vpActivities.adapter = adapter
-    }
+
 
     companion object {
-        fun newInstance(): Activities{
-            val fragment = Activities()
-            val args = Bundle()
-            fragment.arguments = args
-            return fragment
-        }
+        /**
+         * Use this factory method to create a new instance of
+         * this fragment using the provided parameters.
+         *
+         * @param param1 Parameter 1.
+         * @param param2 Parameter 2.
+         * @return A new instance of fragment Treatments.
+         */
+        // TODO: Rename and change types and number of parameters
+        @JvmStatic
+        fun newInstance() =
+            TreatmentsMain().apply {
+                arguments = Bundle().apply {
+//                    putString(ARG_PARAM1, param1)
+//                    putString(ARG_PARAM2, param2)
+                }
+            }
     }
 }

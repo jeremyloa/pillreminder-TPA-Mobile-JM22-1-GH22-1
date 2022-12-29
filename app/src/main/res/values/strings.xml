@@ -75,4 +75,5 @@
     <string name="user_not_existed">User not existed</string>
     <string name="reset_success">Reset password request sent</string>
     <string name="reset_failed">Reset password request send failed</string>
+    <string name="appointments">Appointments</string>
 </resources>

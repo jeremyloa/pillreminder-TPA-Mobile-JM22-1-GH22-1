@@ -75,4 +75,5 @@
     <string name="user_not_existed">Pengguna belum terdaftar</string>
     <string name="reset_success">Permintaan ubah password terkirim</string>
     <string name="reset_failed">Permintaan ubah password tidak terkirim</string>
+    <string name="appointments">Janji Temu</string>
 </resources>
