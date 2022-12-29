@@ -1,0 +1,207 @@
+Index: app/src/main/res/layout/activity_login.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".LoginActivity\">\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+===================================================================
+diff --git a/app/src/main/res/layout/activity_login.xml b/app/src/main/res/layout/activity_login.xml
+--- a/app/src/main/res/layout/activity_login.xml	
++++ b/app/src/main/res/layout/activity_login.xml	
+@@ -4,6 +4,60 @@
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+-    tools:context=".LoginActivity">
++    tools:context=".LoginActivity"
++    android:background="@color/primary"
++    android:padding="20dp"
++    >
++
++    <LinearLayout
++        android:layout_width="289dp"
++        android:layout_height="wrap_content"
++        android:orientation="vertical"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/login">
++
++
++        <EditText
++            android:id="@+id/emailLog"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:ems="10"
++            android:hint="Your Email"
++            android:inputType="textEmailAddress" />
++
++        <EditText
++            android:id="@+id/passwordLog"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:ems="10"
++            android:hint="Your Password" />
++
++
++        <Button
++            android:id="@+id/loginBtn"
++            android:layout_width="match_parent"
++            android:layout_height="90dp"
++            android:backgroundTint="@color/white"
++            android:text="Login"
++            android:textColor="@color/black" />
++
++    </LinearLayout>
++
++    <TextView
++        android:id="@+id/login"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="128dp"
++        android:text="Login"
++        android:textColor="@color/black"
++        android:textSize="28sp"
++        android:textStyle="bold"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.498"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent" />
++
+ 
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_register.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".RegisterActivity\">\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+===================================================================
+diff --git a/app/src/main/res/layout/activity_register.xml b/app/src/main/res/layout/activity_register.xml
+--- a/app/src/main/res/layout/activity_register.xml	
++++ b/app/src/main/res/layout/activity_register.xml	
+@@ -4,6 +4,125 @@
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+-    tools:context=".RegisterActivity">
++    tools:context=".RegisterActivity"
++    android:background="@color/primary"
++    android:padding="20dp"
++
++    >
++
++    <LinearLayout
++        android:layout_width="289dp"
++        android:layout_height="428dp"
++        android:orientation="vertical"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/reg">
++
++        <EditText
++            android:id="@+id/nameRegis"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:ems="10"
++            android:hint="Your Name"
++            android:inputType="textPersonName" />
++
++        <EditText
++            android:id="@+id/editTextPhone"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:ems="10"
++            android:hint="Your Phone Number"
++            android:inputType="phone" />
++
++        <EditText
++            android:id="@+id/emailRegis"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:ems="10"
++            android:hint="Your Email"
++            android:inputType="textEmailAddress" />
++
++        <EditText
++            android:id="@+id/passwordRegis"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:ems="10"
++            android:hint="Your Password" />
++
++        <EditText
++            android:id="@+id/phoneNumber"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:ems="10"
++            android:hint="Your Phone Number"
++            android:inputType="number" />
+ 
++        <EditText
++            android:id="@+id/age"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:ems="10"
++            android:hint="Your Age"
++            android:inputType="number" />
++
++        <LinearLayout
++            android:layout_width="match_parent"
++            android:layout_height="69dp"
++            android:orientation="vertical">
++
++            <TextView
++                android:id="@+id/genderLabel"
++                android:layout_width="match_parent"
++                android:layout_height="wrap_content"
++                android:text="Gender"
++                android:textColor="@color/black"
++                android:textSize="18sp" />
++
++            <RadioGroup
++                android:layout_width="match_parent"
++                android:layout_height="match_parent"
++                android:gravity="center"
++                android:orientation="horizontal">
++
++                <RadioButton
++                    android:id="@+id/maleBtn"
++                    android:layout_width="wrap_content"
++                    android:layout_height="37dp"
++                    android:layout_marginRight="50dp"
++                    android:text="Male"
++                    android:textSize="16sp" />
++
++                <RadioButton
++                    android:id="@+id/femaleBtn"
++                    android:layout_width="wrap_content"
++                    android:layout_height="37dp"
++                    android:text="Female"
++                    android:textSize="16sp" />
++            </RadioGroup>
++        </LinearLayout>
++
++        <Button
++            android:id="@+id/regisBtn"
++            android:layout_width="match_parent"
++            android:layout_height="90dp"
++            android:backgroundTint="@color/white"
++            android:text="Register"
++            android:textColor="@color/black" />
++
++    </LinearLayout>
++
++    <TextView
++        android:id="@+id/reg"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="80dp"
++        android:text="Register"
++        android:textColor="@color/black"
++        android:textSize="28sp"
++        android:textStyle="bold"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.498"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent" />
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file

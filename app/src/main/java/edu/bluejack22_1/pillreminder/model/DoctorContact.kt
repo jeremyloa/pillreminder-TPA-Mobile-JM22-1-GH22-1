@@ -1,6 +1,7 @@
 package edu.bluejack22_1.pillreminder.model
 
 import android.util.Log
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.io.Serializable
@@ -9,7 +10,7 @@ class DoctorContact (val documentid:String?, val doctorid:String?, val patientid
     companion object {
         var db = Firebase.firestore
         var allDoctorCon: MutableList<DoctorContact> = mutableListOf()
-
+//        var user = Firebase.auth.currentUser?.uid || if(User.checkExist(Companion.user)){
         fun fetch_all_doctorcontacts_patientid(){
             allDoctorCon.clear()
             db.collection("doctorcontacts")

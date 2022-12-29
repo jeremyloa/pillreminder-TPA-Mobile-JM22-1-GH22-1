@@ -82,10 +82,13 @@ class RegisterbyMail : AppCompatActivity() {
         }
     }
 
-    private fun checkExist(email:String):Boolean {
+    companion object{
+
+     fun checkExist(email:String):Boolean {
         var cek = false
         var user = User.get_user_email(email)
         if (user != null) cek = true
         return cek
+    }
     }
 }
