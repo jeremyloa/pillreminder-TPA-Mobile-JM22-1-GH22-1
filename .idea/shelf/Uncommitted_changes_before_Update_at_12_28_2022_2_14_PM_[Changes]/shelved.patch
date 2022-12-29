@@ -1,0 +1,17 @@
+Index: app/src/main/java/edu/bluejack22_1/pillreminder/controller/main/Treatments.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.bluejack22_1.pillreminder.controller.main\r\n\r\nimport android.os.Bundle\r\nimport androidx.fragment.app.Fragment\r\nimport android.view.LayoutInflater\r\nimport android.view.View\r\nimport android.view.ViewGroup\r\nimport edu.bluejack22_1.pillreminder.R\r\n\r\n// TODO: Rename parameter arguments, choose names that match\r\n// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER\r\nprivate const val ARG_PARAM1 = \"param1\"\r\nprivate const val ARG_PARAM2 = \"param2\"\r\n\r\n/**\r\n * A simple [Fragment] subclass.\r\n * Use the [Treatments.newInstance] factory method to\r\n * create an instance of this fragment.\r\n */\r\nclass Treatments : Fragment() {\r\n    // TODO: Rename and change types of parameters\r\n    private var param1: String? = null\r\n    private var param2: String? = null\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        arguments?.let {\r\n            param1 = it.getString(ARG_PARAM1)\r\n            param2 = it.getString(ARG_PARAM2)\r\n        }\r\n    }\r\n\r\n    override fun onCreateView(\r\n        inflater: LayoutInflater, container: ViewGroup?,\r\n        savedInstanceState: Bundle?\r\n    ): View? {\r\n        // Inflate the layout for this fragment\r\n        return inflater.inflate(R.layout.fragment_treatments, container, false)\r\n    }\r\n\r\n    companion object {\r\n        fun newInstance(): Treatments{\r\n            val fragment = Treatments()\r\n            val args = Bundle()\r\n            fragment.arguments = args\r\n            return fragment\r\n        }\r\n    }\r\n}
+===================================================================
+diff --git a/app/src/main/java/edu/bluejack22_1/pillreminder/controller/main/Treatments.kt b/app/src/main/java/edu/bluejack22_1/pillreminder/controller/main/Treatments.kt
+--- a/app/src/main/java/edu/bluejack22_1/pillreminder/controller/main/Treatments.kt	
++++ b/app/src/main/java/edu/bluejack22_1/pillreminder/controller/main/Treatments.kt	
+@@ -35,7 +35,7 @@
+         savedInstanceState: Bundle?
+     ): View? {
+         // Inflate the layout for this fragment
+-        return inflater.inflate(R.layout.fragment_treatments, container, false)
++        return inflater.inflate(R.layout.item_treatments, container, false)
+     }
+ 
+     companion object {
