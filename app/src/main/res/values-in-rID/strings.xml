@@ -76,4 +76,21 @@
     <string name="reset_success">Permintaan ubah password terkirim</string>
     <string name="reset_failed">Permintaan ubah password tidak terkirim</string>
     <string name="appointments">Janji Temu</string>
+    <string name="add_new_appointment">Tambahkan janji temu</string>
+    <string name="choose_doctor_contact">Pilih kontak dokter</string>
+    <string name="note">Catatan</string>
+    <string name="place">Lokasi</string>
+    <string name="date_and_time">Tanggal dan Jam</string>
+    <string name="address">Alamat</string>
+    <string name="note_empty">Catatan harus diisi</string>
+    <string name="place_empty">Lokasi harus diisi</string>
+    <string name="address_empty">Alamat harus diisi</string>
+    <string name="date_time_empty">Tanggal dan jam harus diisi</string>
+    <string name="insert_app_success">Berhasil menambahkan janji temu baru</string>
+    <string name="appointment_details">Detail Janji Temu</string>
+    <string name="update_appointment">Ubah Janji Temu</string>
+    <string name="delete_appointment">Hapus Janji Temu</string>
+    <string name="update_app_success">Berhasil mengubah janji temu</string>
+    <string name="delete_app_success">Berhasil menghapus janji temu</string>
+
 </resources>

@@ -13,6 +13,7 @@ import com.google.firebase.Timestamp
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import edu.bluejack22_1.pillreminder.adapter.DocAdapter
+import edu.bluejack22_1.pillreminder.controller.appointment.AppointmentsAdd
 import edu.bluejack22_1.pillreminder.controller.chat.ChatPage
 import edu.bluejack22_1.pillreminder.databinding.ActivityDocContactMainBinding
 import edu.bluejack22_1.pillreminder.model.DoctorContact
@@ -72,7 +73,7 @@ class DocContactMain : AppCompatActivity(), DocAdapter.DocClickListener {
 
     override fun onDocClicked(pos: Int) {
         var intent = Intent(this, DocContactDetail::class.java)
-        intent.putExtra("doctorcontact", DoctorContact.allDoctorCon.get(pos))
+        intent.putExtra("doctorcontact", DoctorContact.allDoctorCon[pos])
         startActivity(intent)
     }
 
@@ -100,7 +101,7 @@ class DocContactMain : AppCompatActivity(), DocAdapter.DocClickListener {
                     Log.i("ADD_MSGROOM_DB", "Success")
                     Log.i("ROOM_CODE",ref.id)
                     intent.putExtra("chatroomid", ref.id)
-                    Log.i("CLICK_DOC_MSG_ROOM", chtroom?.chatroomid.toString())
+                    Log.i("CLICK_DOC_MSG_ROOM", chtroom?.chatroomid.toString() + " " + DoctorContact.allDoctorCon[pos].name.toString())
                     Log.i("CURR_USER", User.curr.uid.toString())
                     startActivity(intent)
                 }
@@ -111,18 +112,23 @@ class DocContactMain : AppCompatActivity(), DocAdapter.DocClickListener {
 //            Msg.fetch_curr_msg(chtroom!!.chatroomid.toString())
             intent.putExtra("doctorid", chtroom!!.doctorid)
             intent.putExtra("patientid", chtroom!!.patientid)
+            intent.putExtra("doctorname", DoctorContact.allDoctorCon[pos].name.toString())
             intent.putExtra("lasttime", chtroom!!.lasttime)
             intent.putExtra("lastmsg", chtroom!!.lastmsg)
             Log.i("ROOM_CODE", chtroom!!.chatroomid.toString())
             intent.putExtra("chatroomid", chtroom!!.chatroomid)
-            Log.i("CLICK_DOC_MSG_ROOM", chtroom?.chatroomid.toString())
+            Log.i("CLICK_DOC_MSG_ROOM", chtroom?.chatroomid.toString() + " " + DoctorContact.allDoctorCon[pos].name.toString())
             Log.i("CURR_USER", User.curr.uid.toString())
             startActivity(intent)
         }
     }
 
     override fun onDocAppointmentClicked(pos: Int) {
-//        TODO("Not yet implemented")
+        var intent = Intent(this, AppointmentsAdd::class.java)
+        intent.putExtra("docconid", DoctorContact.allDoctorCon[pos].documentid)
+        intent.putExtra("doctorid", DoctorContact.allDoctorCon[pos].doctorid)
+        startActivity(intent)
+        finish()
     }
 
 }

@@ -15,6 +15,27 @@
         android:theme="@style/Theme.Pillreminder"
         tools:targetApi="31">
         <activity
+            android:name=".controller.appointment.AppointmentsUpdate"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".controller.appointment.AppointmentsDetail"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".controller.appointment.AppointmentsAdd"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".controller.chat.ChatSearch"
             android:exported="false">
             <meta-data
