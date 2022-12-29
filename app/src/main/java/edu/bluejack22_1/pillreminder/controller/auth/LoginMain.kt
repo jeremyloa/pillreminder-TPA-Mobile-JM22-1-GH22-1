@@ -120,9 +120,9 @@ class LoginMain : AppCompatActivity() {
 
     private val launcher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            Log.d("loginGoogle", "launcher2")
+
             if (result.resultCode == Activity.RESULT_OK) {
-                Log.d("loginGoogle", "launcher1")
+
                 val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
                 handleResults(task)
             }
@@ -131,7 +131,7 @@ class LoginMain : AppCompatActivity() {
 
     private fun handleResults(task: Task<GoogleSignInAccount>) {
         if (task.isSuccessful) {
-            Log.d("loginGoogle", "handleres")
+
             val account: GoogleSignInAccount? = task.result
             if (account != null) {
                 updateLayout(account)
@@ -143,19 +143,54 @@ class LoginMain : AppCompatActivity() {
     }
 
     private fun updateLayout(account: GoogleSignInAccount) {
+        Log.d("loginGoogle", "luar")
         val cre = GoogleAuthProvider.getCredential(account.idToken, null)
-        Log.d("loginGoogle", "luar2")
+
         auth.signInWithCredential(cre).addOnCompleteListener {
-            Log.d("loginGoogle", "luar")
+
             if (it.isSuccessful) {
-                Log.d("loginGoogle", "masuklogingoogle")
+                Log.d("loginGoogle", "luar2")
+                email = account.email.toString()
+                val cek = RegisterbyMail.checkExist(email)
+                Log.d("loginGoogle", "luar3")
                 val intent: Intent = Intent(this, MainActivity::class.java)
-                intent.putExtra("email", account.email)
-                intent.putExtra("name", account.displayName)
-                startActivity(intent)
+                if(!cek){
+                    //login
+                    Log.d("loginGoogle", "!cek")
+                    User.login(auth.currentUser!!.uid)
+                    startActivity(intent)
+                    Log.d("loginGoogle", "loginWGoogle")
+                }
+                else{
+                    //regis
+                    Log.d("loginGoogle", "cek")
+                    val role = "patients"
+                    val name = account.displayName
+                    val email = account.email
+                    val photo = account.photoUrl
+                    var cek2 = false
+                    val user = it.result.user
+                    val addDoc = hashMapOf(
+                        "role" to role,
+                        "name" to name,
+                        "email" to email,
+                        "phone" to "",
+                        "photo" to photo
+                    )
+                    User.db.collection("users").document(user!!.uid).set(addDoc).addOnSuccessListener {
+                        User.fetch_all_users()
+                        cek2 = true
+                        Log.d("loginGoogle", "regisGoogle")
+                    }.addOnFailureListener {
+                        Log.d("loginGoogle", "g bisa regis")
+                        cek2 = false
+                    }
+
+                    startActivity(intent)
+                }
 
             } else {
-                Log.d("loginGoogle", "GAMASUKlogingoogle")
+
                 Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
             }
         }
