@@ -14,6 +14,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "918358412448-0h8nsdq0nimc78ihvr2rfti4kmb6ol77.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.bluejack22_1.pillreminder",
+            "certificate_hash": "77a12f17d81585e298ed5ffbb377d11fc674335f"
+          }
+        },
+        {
+          "client_id": "918358412448-62446f7pr0kkla6jrambktqft9m5ssja.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.bluejack22_1.pillreminder",
+            "certificate_hash": "c384aaecf169479947eeb30e4551bc7830c4d5fa"
+          }
+        },
+        {
           "client_id": "918358412448-7e3fuq3vpralsiicvqdmv8b497crb387.apps.googleusercontent.com",
           "client_type": 3
         }
