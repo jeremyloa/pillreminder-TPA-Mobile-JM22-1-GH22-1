@@ -14,25 +14,49 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="05ea7dcd-afd6-4266-a6fe-70bda21ec6f9" name="Changes" comment="search, localization, reset pass">
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" afterDir="false" />
+    <list default="true" id="05ea7dcd-afd6-4266-a6fe-70bda21ec6f9" name="Changes" comment="viewpager base">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/adapter/AppAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/controller/appointment/AppointmentsAdd.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/controller/appointment/AppointmentsDetail.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/controller/appointment/AppointmentsUpdate.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_appointments_add.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_appointments_detail.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_appointments_update.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_app.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values-land/dimens.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values-w1240dp/dimens.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values-w600dp/dimens.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/navEditor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/navEditor.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/controller/auth/LoginMain.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/controller/auth/LoginMain.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/controller/auth/RegisterbyMail.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/controller/auth/RegisterbyMail.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/controller/appointment/AppointmentsMain.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/controller/appointment/AppointmentsMain.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/controller/doctor/DocContactMain.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/controller/doctor/DocContactMain.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/controller/doctor/DocContactSearch.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/controller/doctor/DocContactSearch.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/controller/main/Activities.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/controller/main/Activities.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/controller/main/Home.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/controller/main/Home.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/controller/main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/controller/main/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/controller/main/Messages.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/controller/main/Messages.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/controller/treatment/TreatmentsMain.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/controller/treatment/TreatmentsMain.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/model/Appointment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/model/Appointment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/model/DoctorContact.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/model/DoctorContact.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/model/User.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/model/User.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_appointments_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_appointments_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_treatments_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_treatments_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-in-rID/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-in-rID/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\LENOVO\.android\avd\Pixel_2_API_30_1.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[5200912bb4d155db]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -42,9 +66,6 @@
     <system id="GRADLE">
       <state>
         <task path="$PROJECT_DIR$">
-          <activation />
-        </task>
-        <task path="$PROJECT_DIR$/app">
           <activation />
         </task>
         <projects_view>
@@ -57,18 +78,11 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="pillreminder" type="f1a62948:ProjectNode" />
-                <item name="app" type="2d1252cf:ModuleNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="pillreminder" type="f1a62948:ProjectNode" />
-                <item name="app" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="pillreminder" type="f1a62948:ProjectNode" />
-                <item name="app" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="android" type="c8890929:TasksNode$1" />
               </path>
@@ -85,8 +99,8 @@
         <option value="Kotlin Object" />
         <option value="resourceFile" />
         <option value="valueResourceFile" />
-        <option value="layoutResourceFile" />
         <option value="Kotlin Class" />
+        <option value="layoutResourceFile" />
       </list>
     </option>
   </component>
@@ -123,20 +137,16 @@
     <property name="com.github.airsaid.androidlocalize.is_open_translated_file" value="true" />
     <property name="com.github.airsaid.androidlocalize.is_overwrite_existing_string" value="true" />
     <property name="com.github.airsaid.androidlocalize.selected_languages" value="98" />
-    <property name="com.intellij.openapi.externalSystem.service.settings.ExternalSystemGroupConfigurable" value="ALL" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app" />
+    <property name="last_opened_file_path" value="C:/Gradle/gradle-7.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="experimental" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="show.do.not.copy.http.proxy.settings.to.gradle" value="false" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="android.template.-262190903">
       <recent name="edu.bluejack22_1.pillreminder" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\LENOVO\TPA-Mobile-JM22-1-GH22-1\app" />
     </key>
     <key name="android.template.-1507359586">
       <recent name="edu.bluejack22_1.pillreminder" />
@@ -145,11 +155,11 @@
       <recent name="edu.bluejack22_1.pillreminder" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="edu.bluejack22_1.pillreminder.controller.appointment" />
       <recent name="edu.bluejack22_1.pillreminder.controller.chat" />
       <recent name="edu.bluejack22_1.pillreminder.controller.doctor" />
       <recent name="edu.bluejack22_1.pillreminder.controller.main" />
       <recent name="edu.bluejack22_1.pillreminder.controller" />
-      <recent name="edu.bluejack22_1.pillreminder.controller.auth" />
     </key>
     <key name="android.template.-1181507588">
       <recent name="edu.bluejack22_1.pillreminder" />
@@ -160,11 +170,6 @@
     <key name="android.template.-1240136905">
       <recent name="edu.bluejack22_1.pillreminder" />
     </key>
-  </component>
-  <component name="RunAnythingCache">
-    <option name="myCommands">
-      <command value="gradle --daemon" />
-    </option>
   </component>
   <component name="RunManager" selected="Android App.app">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
@@ -226,46 +231,6 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TPA-Mobile-JM22-1-GH22-1" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--daemon" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list />
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="TPA-Mobile-JM22-1-GH22-1:app [signingReport]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/app" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="signingReport" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <configuration name="pillreminder [signingReport]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -287,29 +252,12 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="pillreminder" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="pillreminder" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Android App.app" />
       <item itemvalue="Gradle.pillreminder [signingReport]" />
-      <item itemvalue="Gradle.TPA-Mobile-JM22-1-GH22-1" />
-      <item itemvalue="Gradle.TPA-Mobile-JM22-1-GH22-1:app [signingReport]" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.TPA-Mobile-JM22-1-GH22-1:app [signingReport]" />
-        <item itemvalue="Gradle.TPA-Mobile-JM22-1-GH22-1" />
         <item itemvalue="Gradle.pillreminder [signingReport]" />
       </list>
     </recent_temporary>
@@ -393,7 +341,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672233241204</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="viewpager base">
+      <created>1672279714045</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1672279714045</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -419,6 +374,7 @@
     <MESSAGE value="msg" />
     <MESSAGE value="msg text &amp; photo" />
     <MESSAGE value="search, localization, reset pass" />
-    <option name="LAST_COMMIT_MESSAGE" value="search, localization, reset pass" />
+    <MESSAGE value="viewpager base" />
+    <option name="LAST_COMMIT_MESSAGE" value="viewpager base" />
   </component>
 </project>

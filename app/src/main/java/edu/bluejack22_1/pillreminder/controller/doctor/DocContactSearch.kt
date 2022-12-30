@@ -13,6 +13,7 @@ import com.google.firebase.Timestamp
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import edu.bluejack22_1.pillreminder.adapter.DocAdapter
+import edu.bluejack22_1.pillreminder.controller.appointment.AppointmentsAdd
 import edu.bluejack22_1.pillreminder.controller.chat.ChatPage
 import edu.bluejack22_1.pillreminder.databinding.ActivityDocContactSearchBinding
 import edu.bluejack22_1.pillreminder.model.DoctorContact
@@ -114,7 +115,11 @@ class DocContactSearch : AppCompatActivity(), DocAdapter.DocClickListener {
     }
 
     override fun onDocAppointmentClicked(pos: Int) {
-        TODO("Not yet implemented")
+        var intent = Intent(this, AppointmentsAdd::class.java)
+        intent.putExtra("docconid", DoctorContact.allDoctorCon[pos].documentid)
+        intent.putExtra("doctorid", DoctorContact.allDoctorCon[pos].doctorid)
+        startActivity(intent)
+        finish()
     }
 
     fun searchDoc(query: String): MutableList<DoctorContact>{

@@ -55,7 +55,13 @@ class MainActivity : AppCompatActivity() {
             }
             else -> {false}
         }}
-        loadFragment(Home.newInstance())
+        if (intent.hasExtra("fragment")) {
+            val frag = intent.getSerializableExtra("fragment") as Class<out Fragment>
+            loadFragment(frag.newInstance())
+            nav.selectedItemId = R.id.navigation_treatments
+        } else {
+            loadFragment(Home.newInstance())
+        }
     }
 
     private fun loadFragment(fragment: Fragment): Boolean {

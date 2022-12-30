@@ -21,16 +21,6 @@ import edu.bluejack22_1.pillreminder.model.Msg
 import edu.bluejack22_1.pillreminder.model.MsgRoom
 import edu.bluejack22_1.pillreminder.model.User
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [Messages.newInstance] factory method to
- * create an instance of this fragment.
- */
 class Messages : Fragment(), MsgRoomAdapter.MsgRoomListener {
     companion object {
         lateinit var msgRoomAdapter: MsgRoomAdapter
@@ -50,15 +40,9 @@ class Messages : Fragment(), MsgRoomAdapter.MsgRoomListener {
     private lateinit var searchMsgText: TextInputEditText
     private lateinit var searchMsgBtn: ImageButton
 
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
         }
     }
 

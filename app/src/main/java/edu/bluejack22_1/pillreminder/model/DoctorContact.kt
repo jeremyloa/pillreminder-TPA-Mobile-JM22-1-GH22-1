@@ -71,18 +71,22 @@ class DoctorContact (val documentid:String?, val doctorid:String?, val patientid
         }
 
         fun get_doctorcontacts_documentid(documentid: String): DoctorContact?{
-            lateinit var dc: DoctorContact
-            db.collection("doctorcontacts").document(documentid).get()
-                .addOnSuccessListener { doc ->  dc = DoctorContact(
-                                        doc.id,
-                                        doc.data!!.get("doctorid").toString(),
-                                        doc.data!!.get("patientid").toString(),
-                                        doc.data!!.get("name").toString(),
-                                        doc.data!!.get("email").toString(),
-                                        doc.data!!.get("phone").toString(),
-                                        doc.data!!.get("photo").toString()
-                                    )}
-            return dc
+//            lateinit var dc: DoctorContact
+//            db.collection("doctorcontacts").document(documentid).get()
+//                .addOnSuccessListener { doc ->  dc = DoctorContact(
+//                                        doc.id,
+//                                        doc.data!!.get("doctorid").toString(),
+//                                        doc.data!!.get("patientid").toString(),
+//                                        doc.data!!.get("name").toString(),
+//                                        doc.data!!.get("email").toString(),
+//                                        doc.data!!.get("phone").toString(),
+//                                        doc.data!!.get("photo").toString()
+//                                    )
+//                }
+            for (doc in allDoctorCon){
+                if (doc.documentid.equals(documentid)) return doc
+            }
+            return null
         }
 
         fun get_doctorcontacts_doctorid(doctorid: String): DoctorContact?{
