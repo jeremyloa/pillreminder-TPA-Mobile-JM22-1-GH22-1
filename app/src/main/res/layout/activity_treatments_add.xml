@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".controller.treatment.TreatmentsAdd">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/titleTreatmentAdd"
+            android:layout_centerHorizontal="true"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:backgroundTint="?android:statusBarColor"
+            android:orientation="vertical">
+            <LinearLayout
+                android:paddingLeft="20dp"
+                android:paddingRight="30dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:clickable="false"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/backButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_baseline_arrow_back_24"
+                    android:paddingHorizontal="10dp"
+                    app:tint="?attr/colorPrimaryVariant"
+                    android:clickable="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:text="@string/add_new_treatment"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
+                    android:textColor="?attr/colorPrimaryVariant"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+    <LinearLayout
+        android:layout_below="@id/titleTreatmentAdd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp">
+
+            <EditText
+                android:id="@+id/addTrtName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/lato"
+                android:hint="@string/title" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/addTrtDose"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato"
+                    android:inputType="numberDecimal"
+                    android:hint="@string/dose" />
+                <EditText
+                    android:id="@+id/addTrtUnit"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato"
+                    android:hint="@string/unit" />
+                <Spinner
+                    android:id="@+id/addTrtFreq"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/lato"/>
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/addTrtStartDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/lato"
+                android:editable="false"
+                android:hint="@string/start_date"/>
+
+            <EditText
+                android:id="@+id/addTrtEndDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/lato"
+                android:editable="false"
+                android:hint="@string/end_date"/>
+
+             <EditText
+                android:id="@+id/addTrtRemindHourMin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/lato"
+                android:editable="false"
+                android:hint="@string/time"/>
+
+            <Button
+                android:id="@+id/goAddTrt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="?attr/colorPrimary"
+                android:text="@string/add_new_treatment"
+                android:textColor="?attr/colorOnPrimary" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -13,10 +13,7 @@ import edu.bluejack22_1.pillreminder.R
 import edu.bluejack22_1.pillreminder.controller.Splash
 import edu.bluejack22_1.pillreminder.controller.doctor.DocContactMain
 import edu.bluejack22_1.pillreminder.databinding.FragmentHomeBinding
-import edu.bluejack22_1.pillreminder.model.Appointment
-import edu.bluejack22_1.pillreminder.model.DoctorContact
-import edu.bluejack22_1.pillreminder.model.MsgRoom
-import edu.bluejack22_1.pillreminder.model.User
+import edu.bluejack22_1.pillreminder.model.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -45,6 +42,7 @@ class Home : Fragment() {
         MsgRoom.allMsgRoom.clear()
         MsgRoom.fetch_all_msgrooms()
         Appointment.fetch_all_appointments()
+        Treatment.fetch_all_treatments()
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
