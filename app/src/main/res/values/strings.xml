@@ -76,4 +76,20 @@
     <string name="reset_success">Reset password request sent</string>
     <string name="reset_failed">Reset password request send failed</string>
     <string name="appointments">Appointments</string>
+    <string name="add_new_appointment">Add new appointment</string>
+    <string name="choose_doctor_contact">Choose Doctor Contact</string>
+    <string name="note">Note</string>
+    <string name="place">Place</string>
+    <string name="date_and_time">Date and Time</string>
+    <string name="address">Address</string>
+    <string name="note_empty">Note should not be empty</string>
+    <string name="place_empty">Place should not be empty</string>
+    <string name="address_empty">Address should not be empty</string>
+    <string name="date_time_empty">Date and time should not be empty</string>
+    <string name="insert_app_success">Add new appointment success</string>
+    <string name="update_app_success">Update appointment success</string>
+    <string name="delete_app_success">Delete appointment success</string>
+    <string name="appointment_details">Appointment Details</string>
+    <string name="update_appointment">Update Appointment</string>
+    <string name="delete_appointment">Delete Appointment</string>
 </resources>

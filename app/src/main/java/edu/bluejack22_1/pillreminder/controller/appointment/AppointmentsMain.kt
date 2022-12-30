@@ -1,63 +1,95 @@
 package edu.bluejack22_1.pillreminder.controller.appointment
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import edu.bluejack22_1.pillreminder.R
 import edu.bluejack22_1.pillreminder.adapter.ActivityAdapter
+import edu.bluejack22_1.pillreminder.adapter.AppAdapter
+import edu.bluejack22_1.pillreminder.controller.doctor.DocContactMain
+import edu.bluejack22_1.pillreminder.databinding.FragmentAppointmentsMainBinding
+import edu.bluejack22_1.pillreminder.model.Appointment
+import edu.bluejack22_1.pillreminder.model.DoctorContact
+import edu.bluejack22_1.pillreminder.model.User
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [AppointmentsMain.newInstance] factory method to
- * create an instance of this fragment.
- */
-class AppointmentsMain : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class AppointmentsMain : Fragment(), AppAdapter.AppListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
+
+    private lateinit var binding: FragmentAppointmentsMainBinding
+    private lateinit var toAddApp: ImageView
+    private lateinit var rvApp: RecyclerView
+    private lateinit var appAdapter: AppAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_appointments_main, container, false)
+        binding = FragmentAppointmentsMainBinding.inflate(layoutInflater, container, false)
+        toAddApp = binding.toAddApp
+        toAddApp.setOnClickListener {
+            startActivity(Intent(context, DocContactMain::class.java))
+        }
+//        buildRecyclerView()
+        return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        buildRecyclerView()
+    }
+    private fun buildRecyclerView(){
+        rvApp = binding.rvApp
+        rvApp.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        if (User.curr.role.equals("doctors"))  appAdapter = AppAdapter(Appointment.get_appointments_doctorid(User.curr.uid), this)
+        else appAdapter = AppAdapter(Appointment.get_appointments_patientid(User.curr.uid), this)
+        rvApp.adapter = appAdapter
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AppointmentsMain.
-         */
-        // TODO: Rename and change types and number of parameters
+
         @JvmStatic
         fun newInstance() =
             AppointmentsMain().apply {
                 arguments = Bundle().apply {
-//                    putString(ARG_PARAM1, param1)
-//                    putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onAppClicked(pos: Int) {
+        val intent = Intent(context, AppointmentsDetail::class.java)
+        val apts =  if (User.curr.role.equals("doctors")) Appointment.get_appointments_doctorid(User.curr.uid)
+                    else Appointment.get_appointments_patientid(User.curr.uid)
+        val apt = apts[pos]
+        intent.putExtra("documentid", apt.documentid)
+        intent.putExtra("docconid", apt.docconid)
+        intent.putExtra("doctorid", apt.doctorid)
+        intent.putExtra("patientid", apt.patientid)
+        intent.putExtra("datetime", apt.datetime)
+        intent.putExtra("place", apt.place)
+        intent.putExtra("address", apt.address)
+        intent.putExtra("note", apt.note)
+        if (!User.curr.role.equals("doctors")) {
+            val doc = DoctorContact.get_doctorcontacts_documentid(apt.docconid.toString())!!
+            intent.putExtra("doccon", doc)
+            if (!doc.photo.equals("unregistered")) {
+                val opponent = User.get_user_uid(apt.doctorid.toString())!!
+                intent.putExtra("opponent", opponent)
+            }
+        } else {
+            val opponent = User.get_user_uid(apt.patientid.toString())!!
+            intent.putExtra("opponent", opponent)
+        }
+        startActivity(intent)
     }
 }

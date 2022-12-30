@@ -1,6 +1,7 @@
 package edu.bluejack22_1.pillreminder.model
 
 import android.util.Log
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.io.Serializable
@@ -9,7 +10,7 @@ class DoctorContact (val documentid:String?, val doctorid:String?, val patientid
     companion object {
         var db = Firebase.firestore
         var allDoctorCon: MutableList<DoctorContact> = mutableListOf()
-
+//        var user = Firebase.auth.currentUser?.uid || if(User.checkExist(Companion.user)){
         fun fetch_all_doctorcontacts_patientid(){
             allDoctorCon.clear()
             db.collection("doctorcontacts")
@@ -70,18 +71,22 @@ class DoctorContact (val documentid:String?, val doctorid:String?, val patientid
         }
 
         fun get_doctorcontacts_documentid(documentid: String): DoctorContact?{
-            lateinit var dc: DoctorContact
-            db.collection("doctorcontacts").document(documentid).get()
-                .addOnSuccessListener { doc ->  dc = DoctorContact(
-                                        doc.id,
-                                        doc.data!!.get("doctorid").toString(),
-                                        doc.data!!.get("patientid").toString(),
-                                        doc.data!!.get("name").toString(),
-                                        doc.data!!.get("email").toString(),
-                                        doc.data!!.get("phone").toString(),
-                                        doc.data!!.get("photo").toString()
-                                    )}
-            return dc
+//            lateinit var dc: DoctorContact
+//            db.collection("doctorcontacts").document(documentid).get()
+//                .addOnSuccessListener { doc ->  dc = DoctorContact(
+//                                        doc.id,
+//                                        doc.data!!.get("doctorid").toString(),
+//                                        doc.data!!.get("patientid").toString(),
+//                                        doc.data!!.get("name").toString(),
+//                                        doc.data!!.get("email").toString(),
+//                                        doc.data!!.get("phone").toString(),
+//                                        doc.data!!.get("photo").toString()
+//                                    )
+//                }
+            for (doc in allDoctorCon){
+                if (doc.documentid.equals(documentid)) return doc
+            }
+            return null
         }
 
         fun get_doctorcontacts_doctorid(doctorid: String): DoctorContact?{

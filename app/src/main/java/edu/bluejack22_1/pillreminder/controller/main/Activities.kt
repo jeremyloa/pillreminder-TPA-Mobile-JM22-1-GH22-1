@@ -24,18 +24,11 @@ private const val ARG_PARAM2 = "param2"
  */
 class Activities : Fragment() {
     private lateinit var vpActivities: ViewPager2
-    private lateinit var tabActivities: TabLayout
     private lateinit var adapter: ActivityAdapter
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
     }
 
     override fun onCreateView(
@@ -44,6 +37,7 @@ class Activities : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_activities, container, false)
         vpActivities = view.findViewById(R.id.vpActivities)
+
         return view
     }
 

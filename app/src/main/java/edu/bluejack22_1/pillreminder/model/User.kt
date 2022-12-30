@@ -7,7 +7,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
-class User(val role:String?, val uid:String?, val name:String?, val email:String?, val phone:String?, val photo:String?) {
+class User(val role:String?, val uid:String?, val name:String?, val email:String?, val phone:String?, val photo:String?): java.io.Serializable {
     companion object {
         var db = Firebase.firestore
         var auth = Firebase.auth
@@ -30,6 +30,8 @@ class User(val role:String?, val uid:String?, val name:String?, val email:String
                 }
             }
         }
+
+
 
         fun logout(){
             if (FirebaseAuth.getInstance().currentUser!=null) {
@@ -103,6 +105,14 @@ class User(val role:String?, val uid:String?, val name:String?, val email:String
                 if (user.uid.equals(uid)) return user
             }
             return null
+        }
+
+
+
+        fun checkExist(uid:String?):Boolean {
+            var cek = false
+            if (uid != null) cek = true
+            return cek
         }
 
     }

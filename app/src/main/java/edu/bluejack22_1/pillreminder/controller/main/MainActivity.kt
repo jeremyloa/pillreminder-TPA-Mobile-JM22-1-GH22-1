@@ -3,9 +3,11 @@ package edu.bluejack22_1.pillreminder.controller.main
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 import edu.bluejack22_1.pillreminder.R
 import edu.bluejack22_1.pillreminder.model.User
 
@@ -53,7 +55,13 @@ class MainActivity : AppCompatActivity() {
             }
             else -> {false}
         }}
-        loadFragment(Home.newInstance())
+        if (intent.hasExtra("fragment")) {
+            val frag = intent.getSerializableExtra("fragment") as Class<out Fragment>
+            loadFragment(frag.newInstance())
+            nav.selectedItemId = R.id.navigation_treatments
+        } else {
+            loadFragment(Home.newInstance())
+        }
     }
 
     private fun loadFragment(fragment: Fragment): Boolean {
@@ -65,6 +73,19 @@ class MainActivity : AppCompatActivity() {
             return true
         }
         return false
+    }
+
+
+
+    private lateinit var auth: FirebaseAuth
+
+    private fun loginFromGoogle(){
+        auth = FirebaseAuth.getInstance()
+
+        val email = intent.getStringExtra("email")
+        val displayName = intent.getStringExtra("name")
+
+
     }
 
 }
