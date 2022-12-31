@@ -15,6 +15,8 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import edu.bluejack22_1.pillreminder.R
 import edu.bluejack22_1.pillreminder.controller.Splash
@@ -24,12 +26,14 @@ import edu.bluejack22_1.pillreminder.model.DoctorContact
 import edu.bluejack22_1.pillreminder.model.User
 
 class LoginMain : AppCompatActivity() {
+    private val RC_SIGN_IN = 9001
+    private lateinit var client: GoogleSignInClient
+    private lateinit var db: FirebaseFirestore
 
     private lateinit var binding: ActivityLoginMainBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var email: String
     private lateinit var pass: String
-    private lateinit var googleSignInClient: GoogleSignInClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         auth = Firebase.auth
@@ -94,106 +98,62 @@ class LoginMain : AppCompatActivity() {
 
 
     private fun loginGoogleListener() {
-
         binding.toLoginGoogleBtn.setOnClickListener {
-
-
             auth = FirebaseAuth.getInstance()
-            val webClientId = "918358412448-7e3fuq3vpralsiicvqdmv8b497crb387.apps.googleusercontent.com"
-            val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(webClientId)
-                .requestEmail()
-                .build()
+            val gso:GoogleSignInOptions = GoogleSignInOptions
+                    .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .requestIdToken(getString(R.string.default_web_client))
+                    .requestEmail()
+                    .build()
 
-            googleSignInClient = GoogleSignIn.getClient(this, gso)
-            signInGoogle()
-
-
-
+            client = GoogleSignIn.getClient(this, gso)
+            val signInIntent = client.signInIntent
+            startActivityForResult(signInIntent, RC_SIGN_IN)
         }
     }
 
-    fun signInGoogle() {
-        val signInIntent = googleSignInClient.signInIntent
-
-        launcher.launch(signInIntent)
-    }
-
-    private val launcher =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-
-            if (result.resultCode == Activity.RESULT_OK) {
-
-                val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
-                handleResults(task)
-            }
-
-        }
-
-    private fun handleResults(task: Task<GoogleSignInAccount>) {
-        if (task.isSuccessful) {
-
-            val account: GoogleSignInAccount? = task.result
-            if (account != null) {
-                updateLayout(account)
-            }
-        } else {
-            Toast.makeText(this, task.exception.toString(), Toast.LENGTH_SHORT).show()
-
-        }
-    }
-
-    private fun updateLayout(account: GoogleSignInAccount) {
-        Log.d("loginGoogle", "luar")
-        val cre = GoogleAuthProvider.getCredential(account.idToken, null)
-
-        auth.signInWithCredential(cre).addOnCompleteListener {
-
-            if (it.isSuccessful) {
-                Log.d("loginGoogle", "luar2")
-                email = account.email.toString()
-                val cek = RegisterbyMail.checkExist(email)
-                Log.d("loginGoogle", "luar3")
-                val intent: Intent = Intent(this, Splash::class.java)
-                if(!cek){
-                    //login
-                    Log.d("loginGoogle", "!cek")
-                    User.login(auth.currentUser!!.uid)
-                    startActivity(intent)
-                    Log.d("loginGoogle", "loginWGoogle")
-                }
-                else{
-                    //regis
-                    Log.d("loginGoogle", "cek")
-                    val role = "patients"
-                    val name = account.displayName
-                    val email = account.email
-                    val photo = account.photoUrl
-                    var cek2 = false
-                    val user = it.result.user
-                    val addDoc = hashMapOf(
-                        "role" to role,
-                        "name" to name,
-                        "email" to email,
-                        "phone" to "",
-                        "photo" to photo
-                    )
-                    User.db.collection("users").document(user!!.uid).set(addDoc).addOnSuccessListener {
-                        User.fetch_all_users()
-                        cek2 = true
-                        Log.d("loginGoogle", "regisGoogle")
-                    }.addOnFailureListener {
-                        Log.d("loginGoogle", "g bisa regis")
-                        cek2 = false
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == RC_SIGN_IN) {
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            if (task.isSuccessful) {
+                val acc: GoogleSignInAccount? = task.result
+                if (acc!=null) {
+                    val cred = GoogleAuthProvider.getCredential(acc.idToken, null)
+                    auth.signInWithCredential(cred).addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            val email = acc.email.toString()
+                            val cek = User.get_user_email(email)
+                            if (cek!=null) {
+                                User.login(auth.currentUser!!.uid)
+                                startActivity(Intent(this, Splash::class.java))
+                                finish()
+                            } else {
+                                db = Firebase.firestore
+                                val name = acc.displayName.toString()
+                                val phone = "0"
+                                val role = ""
+                                val rol = if (role.equals(resources.getString(R.string.register_as_doctor))) "doctors" else "patients"
+                                val addDoc = hashMapOf(
+                                    "role" to rol,
+                                    "name" to name,
+                                    "email" to email,
+                                    "phone" to phone,
+                                    "photo" to "https://i.pravatar.cc/150?u=" + auth.currentUser!!.uid
+                                )
+                                db.collection("users").document(auth.currentUser!!.uid).set(addDoc).addOnSuccessListener {
+                                    User.fetch_all_users()
+                                    Toast.makeText(this, resources.getString(R.string.register_success), Toast.LENGTH_SHORT).show()
+                                    startActivity(Intent(this, Splash::class.java))
+                                    finish()
+                                }.addOnFailureListener {
+                                    Toast.makeText(this, resources.getString(R.string.register_failed), Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                        } else Toast.makeText(this, resources.getString(R.string.auth_failed), Toast.LENGTH_SHORT).show()
                     }
-
-                    startActivity(intent)
                 }
-
-            } else {
-
-                Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
-            }
+            } else Toast.makeText(this, resources.getString(R.string.register_failed), Toast.LENGTH_SHORT).show()
         }
     }
 }
