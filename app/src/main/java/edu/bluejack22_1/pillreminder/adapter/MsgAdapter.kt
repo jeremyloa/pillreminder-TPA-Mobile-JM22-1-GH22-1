@@ -65,11 +65,7 @@ class MsgAdapter(var currMsg: MutableList<Msg>, var listener: MsgListener): Recy
 
     override fun getItemViewType(position: Int): Int {
         val msg = currMsg[position]
-        return if (User.curr.uid == msg.sender) {
-            ITEM_SENT
-        } else {
-            ITEM_RECEIVE
-        }
+        return if (User.curr.uid == msg.sender) ITEM_SENT else ITEM_RECEIVE
     }
 
     override fun getItemCount(): Int = currMsg.size

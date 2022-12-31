@@ -9,7 +9,7 @@ import com.google.firebase.auth.FirebaseAuth
 import edu.bluejack22_1.pillreminder.R
 import edu.bluejack22_1.pillreminder.controller.auth.LoginMain
 import edu.bluejack22_1.pillreminder.controller.main.MainActivity
-import edu.bluejack22_1.pillreminder.model.User
+import edu.bluejack22_1.pillreminder.model.*
 
 class Splash : AppCompatActivity() {
 
@@ -17,11 +17,18 @@ class Splash : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         var auth = FirebaseAuth.getInstance()
+
+        if (auth.currentUser!=null){
+            User.login(auth.currentUser!!.uid)
+            DoctorContact.fetch_all_doctorcontacts_patientid()
+            Appointment.fetch_all_appointments()
+            Treatment.fetch_all_treatments()
+        }
+
         User.fetch_all_users()
 
         Handler(Looper.getMainLooper()).postDelayed({
             if (auth.currentUser!=null) {
-                User.login(auth.currentUser!!.uid)
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()
             } else {

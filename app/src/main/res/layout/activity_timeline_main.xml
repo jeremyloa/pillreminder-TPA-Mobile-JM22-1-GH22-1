@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".controller.timeline.TimelineMain">
+
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/titleTLMain"
+            android:layout_centerHorizontal="true"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:backgroundTint="?android:statusBarColor"
+            android:orientation="vertical">
+            <LinearLayout
+                android:paddingLeft="20dp"
+                android:paddingRight="30dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:clickable="false"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/backButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_baseline_arrow_back_24"
+                    android:paddingHorizontal="10dp"
+                    app:tint="?attr/colorPrimaryVariant"
+                    android:clickable="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:text="@string/my_timeline"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
+                    android:textColor="?attr/colorPrimaryVariant"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/toAddAppTL"
+                    android:layout_width="50dp"
+                    android:paddingHorizontal="10dp"
+                    android:clickable="true"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    app:tint="?attr/colorPrimaryVariant"
+                    android:src="@drawable/ic_baseline_appointment_24"/>
+
+                <ImageView
+                    android:id="@+id/toAddTrtTL"
+                    android:layout_width="50dp"
+                    android:paddingHorizontal="10dp"
+                    android:clickable="true"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    app:tint="?attr/colorPrimaryVariant"
+                    android:src="@drawable/ic_baseline_medication_24"/>
+
+            </LinearLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_below="@id/titleTLMain"
+            android:id="@+id/rvTLMain"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:layout_height="wrap_content"/>
+
+</RelativeLayout>

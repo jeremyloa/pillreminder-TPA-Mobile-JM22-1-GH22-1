@@ -2,6 +2,7 @@ package edu.bluejack22_1.pillreminder.model
 
 import android.util.Log
 import com.google.firebase.Timestamp
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -11,12 +12,14 @@ import java.io.Serializable
 class MsgRoom: Serializable {
     companion object{
         var db = Firebase.firestore
+        var auth = Firebase.auth
+
         var allMsgRoom: MutableList<MsgRoom> = mutableListOf()
 
         fun fetch_all_msgrooms(){
             if (User.curr.role.equals("doctors")) {
                 db.collection("chatrooms")
-                .whereEqualTo("doctorid", User.curr.uid)
+                .whereEqualTo("doctorid", auth.currentUser!!.uid)
                 .orderBy("lasttime", Query.Direction.DESCENDING)
                 .get()
                 .addOnSuccessListener { docs ->
@@ -55,7 +58,7 @@ class MsgRoom: Serializable {
                 }
             } else {
                 db.collection("chatrooms")
-                .whereEqualTo("patientid", User.curr.uid)
+                .whereEqualTo("patientid", auth.currentUser!!.uid)
                 .orderBy("lasttime", Query.Direction.DESCENDING)
                 .get()
                 .addOnSuccessListener { docs ->

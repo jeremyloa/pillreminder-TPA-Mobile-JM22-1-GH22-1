@@ -2,8 +2,8 @@
 <resources>
 
     <string-array name="arrayRegisRole">
-         <item>Register as Doctor</item>
-         <item>Register as Patient</item>
+         <item>@string/register_as_doctor</item>
+         <item>@string/register_as_patient</item>
     </string-array>
 
 </resources>

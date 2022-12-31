@@ -17,6 +17,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import edu.bluejack22_1.pillreminder.R
+import edu.bluejack22_1.pillreminder.controller.Splash
 import edu.bluejack22_1.pillreminder.controller.main.MainActivity
 import edu.bluejack22_1.pillreminder.databinding.ActivityLoginMainBinding
 import edu.bluejack22_1.pillreminder.model.DoctorContact
@@ -64,7 +65,7 @@ class LoginMain : AppCompatActivity() {
                     if (task.isSuccessful) {
 //                    Log.d("Login Firebase", "signInWithEmail:success")
                         User.login(auth.currentUser!!.uid)
-                        startActivity(Intent(this, MainActivity::class.java))
+                        startActivity(Intent(this, Splash::class.java))
                         finish()
                     } else {
                         Log.w("Login Firebase", "signInWithEmail:failure", task.exception)
@@ -153,7 +154,7 @@ class LoginMain : AppCompatActivity() {
                 email = account.email.toString()
                 val cek = RegisterbyMail.checkExist(email)
                 Log.d("loginGoogle", "luar3")
-                val intent: Intent = Intent(this, MainActivity::class.java)
+                val intent: Intent = Intent(this, Splash::class.java)
                 if(!cek){
                     //login
                     Log.d("loginGoogle", "!cek")

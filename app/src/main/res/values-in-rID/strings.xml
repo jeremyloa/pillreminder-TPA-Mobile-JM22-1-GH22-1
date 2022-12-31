@@ -119,4 +119,7 @@
     <string name="Next">Selanjutnya</string>
     <string name="From">Dari</string>
     <string name="to">sampai</string>
+    <string name="upcoming_activities">Aktivitas Selanjutnya</string>
+    <string name="register_as_doctor">Daftar sebagai Dokter</string>
+    <string name="register_as_patient">Daftar sebagai Pasien</string>
 </resources>

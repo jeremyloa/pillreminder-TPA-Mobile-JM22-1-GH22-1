@@ -2,6 +2,7 @@ package edu.bluejack22_1.pillreminder.model
 
 import android.util.Log
 import com.google.firebase.Timestamp
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -11,6 +12,7 @@ import java.io.Serializable
 class Msg: Serializable {
     companion object{
         var db = Firebase.firestore
+        var auth = Firebase.auth
 //        var currMsg: MutableList<Msg> = mutableListOf()
 //
 //        fun fetch_curr_msg(chatroomid: String){
@@ -49,7 +51,7 @@ class Msg: Serializable {
             val addDoc = hashMapOf(
                 "chatroomid" to chatroomid,
                 "ctn" to ctn,
-                "sender" to User.curr.uid,
+                "sender" to auth.currentUser!!.uid,
                 "sent" to Timestamp.now(),
                 "type" to type
             )

@@ -119,5 +119,7 @@
     <string name="Next">Next</string>
     <string name="From">From</string>
     <string name="to">to</string>
-
+    <string name="upcoming_activities">Upcoming Activities</string>
+    <string name="register_as_doctor">Register as Doctor</string>
+    <string name="register_as_patient">Register as Patient</string>
 </resources>

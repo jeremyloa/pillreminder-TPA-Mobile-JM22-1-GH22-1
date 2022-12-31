@@ -28,9 +28,18 @@
             android:clickable="false"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:text="@string/hello"
+            android:text="@string/upcoming_activities"
             android:textColor="?attr/colorPrimaryVariant"
             android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTLHome"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:layout_height="170dp"/>
 
         <androidx.cardview.widget.CardView
             android:layout_marginTop="@dimen/activity_vertical_margin"

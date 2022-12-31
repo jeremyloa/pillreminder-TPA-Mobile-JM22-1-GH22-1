@@ -74,6 +74,13 @@ class Appointment (val documentid:String?, val docconid:String?, val doctorid:St
             return apts
         }
 
+        fun get_appointments_documentid(documentid: String?): Appointment?{
+            for (apt in allAppointments) {
+                if (apt.documentid.equals(documentid)) return apt
+            }
+            return null
+        }
+
         fun insert_appointment(apt: Appointment){
             val addDoc = hashMapOf(
                 "docconid" to apt.docconid,
