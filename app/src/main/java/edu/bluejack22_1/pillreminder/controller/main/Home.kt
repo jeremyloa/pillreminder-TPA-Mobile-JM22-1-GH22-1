@@ -2,17 +2,15 @@ package edu.bluejack22_1.pillreminder.controller.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import edu.bluejack22_1.pillreminder.R
 import edu.bluejack22_1.pillreminder.adapter.TimelineAdapter
+import edu.bluejack22_1.pillreminder.controller.Notification
 import edu.bluejack22_1.pillreminder.controller.Splash
 import edu.bluejack22_1.pillreminder.controller.appointment.AppointmentsDetail
 import edu.bluejack22_1.pillreminder.controller.doctor.DocContactMain
@@ -41,7 +39,8 @@ class Home : Fragment(), TimelineAdapter.TimelineListener {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
+        Timeline.fetch_all_timeline()
         binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
         rvTLHome = binding.rvTLHome
         toTimeline = binding.toTimeline
@@ -77,7 +76,8 @@ class Home : Fragment(), TimelineAdapter.TimelineListener {
     private fun buildRecyclerView() {
         rvTLHome = binding.rvTLHome
         layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        Timeline.fetch_all_timeline()
+//        Timeline.fetch_all_timeline()
+        Notification.schedule_notifications(requireContext())
         tlAdapter = TimelineAdapter(Timeline.allTimeline, this)
         layoutManager.scrollToPosition(Timeline.get_afternow())
         rvTLHome.layoutManager = layoutManager

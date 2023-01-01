@@ -17,6 +17,7 @@ class MsgRoom: Serializable {
         var allMsgRoom: MutableList<MsgRoom> = mutableListOf()
 
         fun fetch_all_msgrooms(){
+
             if (User.curr.role.equals("doctors")) {
                 db.collection("chatrooms")
                 .whereEqualTo("doctorid", auth.currentUser!!.uid)
@@ -26,7 +27,7 @@ class MsgRoom: Serializable {
                     allMsgRoom.clear()
                     for (doc in docs) {
                         val temp =
-                            if (doc.data.get("lasttime")!=null && doc.data.get("lastmsg").toString()!=null) {
+                            if (doc.data.get("lasttime")!=null && doc.data.get("lastmsg")!=null) {
                                 MsgRoom(
                                     doc.id,
                                     doc.data.get("doctorid").toString(),
@@ -65,7 +66,7 @@ class MsgRoom: Serializable {
                     allMsgRoom.clear()
                     for (doc in docs) {
                         val temp =
-                            if (doc.data.get("lasttime")!=null && doc.data.get("lastmsg").toString()!=null) {
+                            if (doc.data.get("lasttime")!=null && doc.data.get("lastmsg")!=null) {
                                 MsgRoom(
                                     doc.id,
                                     doc.data.get("doctorid").toString(),
@@ -105,7 +106,7 @@ class MsgRoom: Serializable {
         }
 
         fun search_msgroom(query: String): MutableList<MsgRoom>{
-            var result = mutableListOf<MsgRoom>()
+            val result = mutableListOf<MsgRoom>()
             for (room in allMsgRoom){
                 if (room.lastmsg!!.contains(query, true)) result.add(room)
                 else {

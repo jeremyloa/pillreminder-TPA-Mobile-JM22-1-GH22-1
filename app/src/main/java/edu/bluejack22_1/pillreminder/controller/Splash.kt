@@ -16,16 +16,21 @@ class Splash : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-        var auth = FirebaseAuth.getInstance()
+        val auth = FirebaseAuth.getInstance()
 
         if (auth.currentUser!=null){
-            User.login(auth.currentUser!!.uid)
+            User.login()
+//            while (!User.currInitialized()){
+//                Log.i("FETCH_WAIT", "waiting")
+//                User.relog()
+//            }
+            User.fetch_all_users()
             DoctorContact.fetch_all_doctorcontacts_patientid()
             Appointment.fetch_all_appointments()
             Treatment.fetch_all_treatments()
+
         }
 
-        User.fetch_all_users()
 
         Handler(Looper.getMainLooper()).postDelayed({
             if (auth.currentUser!=null) {

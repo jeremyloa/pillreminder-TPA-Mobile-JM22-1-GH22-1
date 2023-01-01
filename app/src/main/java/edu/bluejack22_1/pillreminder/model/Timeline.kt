@@ -27,8 +27,16 @@ class Timeline (val documentid: String?, val timelinetype: Int, val datetimestam
 
         fun get_timeline_afternow_asc(): MutableList<Timeline> {
             fetch_all_timeline()
-            var tls: MutableList<Timeline> = mutableListOf()
+            val tls: MutableList<Timeline> = mutableListOf()
             for (tl in allTimeline) if (tl.datetimestamp.toDate().after(Timestamp.now().toDate())) tls.add(tl)
+            tls.sortBy { it.datetimestamp }
+            return tls
+        }
+
+        fun get_timeline_afternow_today_asc(): MutableList<Timeline> {
+            val tll = get_timeline_afternow_asc()
+            val tls: MutableList<Timeline> = mutableListOf()
+            for (tl in tll) if (tl.datetimestamp.toDate().day == Timestamp.now().toDate().day && tl.datetimestamp.toDate().month == Timestamp.now().toDate().month) tls.add(tl)
             tls.sortBy { it.datetimestamp }
             return tls
         }

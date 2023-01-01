@@ -122,4 +122,6 @@
     <string name="upcoming_activities">Aktivitas Selanjutnya</string>
     <string name="register_as_doctor">Daftar sebagai Dokter</string>
     <string name="register_as_patient">Daftar sebagai Pasien</string>
+    <string name="time_for_treatment">Waktunya melakukan medikasi</string>
+    <string name="time_for_appointment">Waktunya bertemu dokter</string>
 </resources>
