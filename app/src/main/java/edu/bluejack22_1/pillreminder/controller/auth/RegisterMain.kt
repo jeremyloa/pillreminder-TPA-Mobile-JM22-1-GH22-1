@@ -94,7 +94,7 @@ class RegisterMain : AppCompatActivity() {
                             val email = acc.email.toString()
                             val cek = User.get_user_email(email)
                             if (cek!=null) {
-                                User.login(auth.currentUser!!.uid)
+                                User.login()
                                 startActivity(Intent(this, Splash::class.java))
                                 finish()
                             } else {

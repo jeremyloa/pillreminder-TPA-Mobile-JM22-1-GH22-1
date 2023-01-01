@@ -68,7 +68,7 @@ class LoginMain : AppCompatActivity() {
                 auth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
 //                    Log.d("Login Firebase", "signInWithEmail:success")
-                        User.login(auth.currentUser!!.uid)
+                        User.login()
                         startActivity(Intent(this, Splash::class.java))
                         finish()
                     } else {
@@ -125,7 +125,7 @@ class LoginMain : AppCompatActivity() {
                             val email = acc.email.toString()
                             val cek = User.get_user_email(email)
                             if (cek!=null) {
-                                User.login(auth.currentUser!!.uid)
+                                User.login()
                                 startActivity(Intent(this, Splash::class.java))
                                 finish()
                             } else {
