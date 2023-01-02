@@ -1,40 +1,23 @@
 package edu.bluejack22_1.pillreminder.controller.main
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import edu.bluejack22_1.pillreminder.R
-import edu.bluejack22_1.pillreminder.model.User
+import edu.bluejack22_1.pillreminder.controller.Notification
+import edu.bluejack22_1.pillreminder.model.*
 
 class MainActivity : AppCompatActivity() {
-    companion object {
-        fun getLocalizedString(context: Context, resourceId: Int): String {
-            val config = context.resources.configuration
-            val langCode = config.locales[0].language
-            val regionCode = config.locales[0].country
-            val message:String = when {
-                langCode == "in" && regionCode == "ID" -> {
-                    context.resources.getString(resourceId)
-                }
-                else -> {
-                    context.resources.getString(resourceId)
-                }
-            }
-            return message
-        }
-    }
-
-    private var content: FrameLayout? = null
     override fun onCreate(savedInstanceState: Bundle?) {
-        User.relog()
         super.onCreate(savedInstanceState)
+        User.login()
+        Notification.initialize_channels(this)
+        MsgRoom.allMsgRoom.clear()
+        MsgRoom.fetch_all_msgrooms()
         setContentView(R.layout.activity_main)
-        var nav: BottomNavigationView = findViewById(R.id.navigation)
+        val nav: BottomNavigationView = findViewById(R.id.navigation)
         nav.selectedItemId = R.id.navigation_home
         nav.setOnItemSelectedListener{item ->
         when (item.itemId) {
@@ -73,19 +56,6 @@ class MainActivity : AppCompatActivity() {
             return true
         }
         return false
-    }
-
-
-
-    private lateinit var auth: FirebaseAuth
-
-    private fun loginFromGoogle(){
-        auth = FirebaseAuth.getInstance()
-
-        val email = intent.getStringExtra("email")
-        val displayName = intent.getStringExtra("name")
-
-
     }
 
 }

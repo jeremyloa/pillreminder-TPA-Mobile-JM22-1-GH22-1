@@ -92,5 +92,36 @@
     <string name="delete_appointment">Hapus Janji Temu</string>
     <string name="update_app_success">Berhasil mengubah janji temu</string>
     <string name="delete_app_success">Berhasil menghapus janji temu</string>
-
+     <string name="insert_trt_success">Berhasil menambahkan medikasi baru</string>
+     <string name="treatment_details">Detail Medikasi</string>
+     <string name="update_treatment">Ubah Medikasi</string>
+     <string name="delete_treatment">Hapus Medikasi</string>
+     <string name="update_trt_success">Berhasil mengubah medikasi</string>
+     <string name="delete_trt_success">Berhasil menghapus medikasi</string>
+    <string name="add_new_treatment">Tambahkan medikasi baru</string>
+    <string name="title">Judul</string>
+    <string name="dose">Dosis</string>
+    <string name="unit">Satuan</string>
+    <string name="start_date">Tanggal Mulai</string>
+    <string name="end_date">Tanggal Selesai</string>
+    <string name="hour">Jam</string>
+    <string name="minutes">Menit</string>
+    <string name="time">Waktu</string>
+    <string name="daily">Harian</string>
+    <string name="weekly">Mingguan</string>
+    <string name="monthly">Bulanan</string>
+    <string name="title_empty">Judul harus diisi</string>
+    <string name="dose_empty">Dosis harus diisi</string>
+    <string name="unit_empty">Satuan harus diisi</string>
+    <string name="start_date_empty">Tanggal mulai harus diisi</string>
+    <string name="end_date_empty">Tanggal berakhir harus diisi</string>
+    <string name="time_empty">Jam harus diisi</string>
+    <string name="Next">Selanjutnya</string>
+    <string name="From">Dari</string>
+    <string name="to">sampai</string>
+    <string name="upcoming_activities">Aktivitas Selanjutnya</string>
+    <string name="register_as_doctor">Daftar sebagai Dokter</string>
+    <string name="register_as_patient">Daftar sebagai Pasien</string>
+    <string name="time_for_treatment">Waktunya melakukan medikasi</string>
+    <string name="time_for_appointment">Waktunya bertemu dokter</string>
 </resources>

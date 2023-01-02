@@ -1,5 +1,6 @@
 package edu.bluejack22_1.pillreminder.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,15 +25,19 @@ class MsgRoomAdapter (var rooms: MutableList<MsgRoom>, var listener: MsgRoomList
 
     override fun onBindViewHolder(vh: ViewHolder, position: Int) {
         if (rooms.isNullOrEmpty()) return
+        Log.i("ROOM", "Room ID: " + rooms[position].chatroomid.toString())
         if (rooms[position].doctorid == User.curr.uid) {
             vh.itemChatName.text = User.get_user_uid(rooms[position].patientid)!!.name
             Picasso.get().load(User.get_user_uid(rooms[position].patientid)!!.photo).into(vh.itemChatPhoto)
         } else {
-            vh.itemChatName.text = DoctorContact.get_doctorcontacts_doctorid(rooms[position].doctorid!!)!!.name
+            Log.i("ROOM_DOC", "Doctor ID: " + rooms[position].doctorid.toString())
+            val doctor = DoctorContact.get_doctorcontacts_doctorid(rooms[position].doctorid.toString())
+            Log.i("ROOM_DOC", "Doctor Contact Name: " + doctor!!.name.toString())
+            vh.itemChatName.text = doctor.name.toString()
             Picasso.get().load(User.get_user_uid(rooms[position].doctorid)!!.photo).into(vh.itemChatPhoto)
         }
         if (rooms[position].lasttime != null) {
-            vh.itemChatTime.text = dateFormat.format(rooms[position].lasttime?.toDate()).toString()
+            vh.itemChatTime.text = dateFormat.format(rooms[position].lasttime!!.toDate()).toString()
         } else {
             vh.itemChatTime.text = ""
         }

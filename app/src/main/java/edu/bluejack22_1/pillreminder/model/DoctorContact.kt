@@ -9,12 +9,14 @@ import java.io.Serializable
 class DoctorContact (val documentid:String?, val doctorid:String?, val patientid:String?, var name:String?, val email:String?, var phone:String?, var photo:String?): Serializable {
     companion object {
         var db = Firebase.firestore
+        var auth = Firebase.auth
+
         var allDoctorCon: MutableList<DoctorContact> = mutableListOf()
 //        var user = Firebase.auth.currentUser?.uid || if(User.checkExist(Companion.user)){
         fun fetch_all_doctorcontacts_patientid(){
             allDoctorCon.clear()
             db.collection("doctorcontacts")
-            .whereEqualTo("patientid", User.curr.uid)
+            .whereEqualTo("patientid", auth.currentUser!!.uid)
             .get()
             .addOnSuccessListener { docs ->
                 for (doc in docs) {
@@ -47,7 +49,7 @@ class DoctorContact (val documentid:String?, val doctorid:String?, val patientid
                 "doctorid" to doctorid,
                 "email" to email,
                 "name" to name,
-                "patientid" to User.curr.uid,
+                "patientid" to auth.currentUser!!.uid,
                 "phone" to phone,
                 "photo" to photo
             )
@@ -91,7 +93,8 @@ class DoctorContact (val documentid:String?, val doctorid:String?, val patientid
 
         fun get_doctorcontacts_doctorid(doctorid: String): DoctorContact?{
             for (doc in allDoctorCon){
-                if (doc.doctorid.equals(doctorid)) return doc
+                Log.i("SEARCH_DOCTORID", doc.doctorid.toString())
+                if (doc.doctorid.equals(doctorid) && doc.patientid.equals(auth.currentUser!!.uid)) return doc
             }
             return null
         }

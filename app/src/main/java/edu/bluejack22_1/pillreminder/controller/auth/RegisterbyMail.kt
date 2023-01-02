@@ -55,7 +55,7 @@ class RegisterbyMail : AppCompatActivity() {
                 val role = intent.getStringExtra("role")
                 val email = binding.regisMail.text.toString()
                 val pass = binding.regisPass.text.toString()
-                val rol = if (role.equals("Register as Doctor")) "doctors" else "patients"
+                val rol = if (role.equals(resources.getString(R.string.register_as_doctor))) "doctors" else "patients"
                 if (!checkExist(email)) {
                     Log.d("Register Firebase", "Checked not exist")
                     val reg = User.register(rol, email, pass, name.toString(), phone.toString())

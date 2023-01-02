@@ -2,73 +2,53 @@ package edu.bluejack22_1.pillreminder.controller.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.cardview.widget.CardView
-import edu.bluejack22_1.pillreminder.R
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import edu.bluejack22_1.pillreminder.adapter.TimelineAdapter
+import edu.bluejack22_1.pillreminder.controller.Notification
 import edu.bluejack22_1.pillreminder.controller.Splash
+import edu.bluejack22_1.pillreminder.controller.appointment.AppointmentsDetail
 import edu.bluejack22_1.pillreminder.controller.doctor.DocContactMain
+import edu.bluejack22_1.pillreminder.controller.timeline.TimelineMain
+import edu.bluejack22_1.pillreminder.controller.treatment.TreatmentsDetail
 import edu.bluejack22_1.pillreminder.databinding.FragmentHomeBinding
-import edu.bluejack22_1.pillreminder.model.Appointment
-import edu.bluejack22_1.pillreminder.model.DoctorContact
-import edu.bluejack22_1.pillreminder.model.MsgRoom
-import edu.bluejack22_1.pillreminder.model.User
+import edu.bluejack22_1.pillreminder.model.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [Home.newInstance] factory method to
- * create an instance of this fragment.
- */
-class Home : Fragment() {
+class Home : Fragment(), TimelineAdapter.TimelineListener {
     private lateinit var binding: FragmentHomeBinding
+
+    val ITEM_TRT = 1
+    val ITEM_APT = 2
+    private lateinit var rvTLHome: RecyclerView
+    private lateinit var tlAdapter: TimelineAdapter
+    private lateinit var layoutManager: LinearLayoutManager
 
     private lateinit var toTimeline: CardView
     private lateinit var toDoctorContactList: CardView
     private lateinit var toLogout: CardView
 
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
-        User.relog()
-        DoctorContact.fetch_all_doctorcontacts_patientid()
-        MsgRoom.allMsgRoom.clear()
-        MsgRoom.fetch_all_msgrooms()
-        Appointment.fetch_all_appointments()
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
         super.onCreate(savedInstanceState)
-
-
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
+        Timeline.fetch_all_timeline()
         binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
+        rvTLHome = binding.rvTLHome
         toTimeline = binding.toTimeline
+        toTimeline.setOnClickListener { startActivity(Intent(context, TimelineMain::class.java)) }
         toDoctorContactList = binding.toDoctorContactList
         if (User.curr.role=="doctors") toDoctorContactList.visibility = View.GONE
         toDoctorContactList.setOnClickListener {
-            startActivity(
-                Intent(
-                    context,
-                    DocContactMain::class.java
-                )
-            )
+            startActivity(Intent(context, DocContactMain::class.java))
         }
         toLogout = binding.toLogout
         toLogout.setOnClickListener{
@@ -76,15 +56,63 @@ class Home : Fragment() {
             startActivity(Intent(context, Splash::class.java))
             activity?.finish()
         }
+        buildRecyclerView()
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        buildRecyclerView()
+    }
    companion object {
         fun newInstance(): Home{
             val fragment = Home()
             val args = Bundle()
             fragment.arguments = args
             return fragment
+        }
+    }
+
+    private fun buildRecyclerView() {
+        rvTLHome = binding.rvTLHome
+        layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+//        Timeline.fetch_all_timeline()
+        Notification.schedule_notifications(requireContext())
+        tlAdapter = TimelineAdapter(Timeline.allTimeline, this)
+        layoutManager.scrollToPosition(Timeline.get_afternow())
+        rvTLHome.layoutManager = layoutManager
+        rvTLHome.adapter = tlAdapter
+    }
+
+    override fun onTimelineClicked(pos: Int) {
+        val tl = Timeline.allTimeline[pos]
+        if (tl.timelinetype == ITEM_TRT) {
+            val intent = Intent(context, TreatmentsDetail::class.java)
+            intent.putExtra("documentid", tl.documentid)
+            startActivity(intent)
+        } else {
+            val intent = Intent(context, AppointmentsDetail::class.java)
+            val apt = Appointment.get_appointments_documentid(tl.documentid)!!
+            intent.putExtra("documentid", apt.documentid)
+            intent.putExtra("docconid", apt.docconid)
+            intent.putExtra("doctorid", apt.doctorid)
+            intent.putExtra("patientid", apt.patientid)
+            intent.putExtra("datetime", apt.datetime)
+            intent.putExtra("place", apt.place)
+            intent.putExtra("address", apt.address)
+            intent.putExtra("note", apt.note)
+            if (!User.curr.role.equals("doctors")) {
+                val doc = DoctorContact.get_doctorcontacts_documentid(apt.docconid.toString())!!
+                intent.putExtra("doccon", doc)
+                if (!doc.photo.equals("unregistered")) {
+                    val opponent = User.get_user_uid(apt.doctorid.toString())!!
+                    intent.putExtra("opponent", opponent)
+                }
+            } else {
+                val opponent = User.get_user_uid(apt.patientid.toString())!!
+                intent.putExtra("opponent", opponent)
+            }
+            startActivity(intent)
         }
     }
 }

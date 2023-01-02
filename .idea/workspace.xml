@@ -14,20 +14,40 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="05ea7dcd-afd6-4266-a6fe-70bda21ec6f9" name="Changes" comment="search, localization, reset pass">
+    <list default="true" id="05ea7dcd-afd6-4266-a6fe-70bda21ec6f9" name="Changes" comment="notification">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/controller/Notification.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/hid.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/adapter/MsgRoomAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/adapter/MsgRoomAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/controller/Splash.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/controller/Splash.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/controller/auth/LoginMain.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/controller/auth/LoginMain.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/controller/auth/RegisterMain.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/controller/auth/RegisterMain.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/controller/main/Home.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/controller/main/Home.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/controller/main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/controller/main/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/model/Appointment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/model/Appointment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/model/DoctorContact.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/model/DoctorContact.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/model/MsgRoom.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/model/MsgRoom.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/model/Timeline.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/model/Timeline.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/model/Treatment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/model/Treatment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/model/User.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/model/User.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-in-rID/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-in-rID/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[fe6b79ea]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[5200912bb4d155db]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -49,18 +69,11 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="pillreminder" type="f1a62948:ProjectNode" />
-                <item name="app" type="2d1252cf:ModuleNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="pillreminder" type="f1a62948:ProjectNode" />
-                <item name="app" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="pillreminder" type="f1a62948:ProjectNode" />
-                <item name="app" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="android" type="c8890929:TasksNode$1" />
               </path>
@@ -76,8 +89,8 @@
       <list>
         <option value="Kotlin Object" />
         <option value="resourceFile" />
-        <option value="valueResourceFile" />
         <option value="layoutResourceFile" />
+        <option value="valueResourceFile" />
         <option value="Kotlin Class" />
       </list>
     </option>
@@ -92,6 +105,9 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/app/src/main/java/edu/bluejack22_1/pillreminder/controller/treatment/TreatmentsAdd.kt" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -110,14 +126,13 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="android-custom-viewC:/Users/LENOVO/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.1.0/f2bdf79e1977939817f54a9d3e2f6bc52b63bdd0/recyclerview-1.1.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED" value="RecyclerView" />
     <property name="android-custom-viewE:/TPA/pillreminder/app/src/main/java/edu/bluejack22_1/pillreminder/controller/main/MainActivity.kt_SELECTED" value="MainActivity" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="com.github.airsaid.androidlocalize.is_open_translated_file" value="true" />
     <property name="com.github.airsaid.androidlocalize.is_overwrite_existing_string" value="true" />
     <property name="com.github.airsaid.androidlocalize.selected_languages" value="98" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Gradle/gradle-7.2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Temp/dose.apk" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="show.do.not.copy.http.proxy.settings.to.gradle" value="false" />
@@ -134,13 +149,16 @@
       <recent name="edu.bluejack22_1.pillreminder" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
-      <recent name="edu.bluejack22_1.pillreminder.controller.appointment" />
-      <recent name="edu.bluejack22_1.pillreminder.controller.chat" />
-      <recent name="edu.bluejack22_1.pillreminder.controller.doctor" />
-      <recent name="edu.bluejack22_1.pillreminder.controller.main" />
       <recent name="edu.bluejack22_1.pillreminder.controller" />
+      <recent name="edu.bluejack22_1.pillreminder.model" />
+      <recent name="edu.bluejack22_1.pillreminder.controller.timeline" />
+      <recent name="edu.bluejack22_1.pillreminder.controller.treatment" />
+      <recent name="edu.bluejack22_1.pillreminder.controller.appointment" />
     </key>
     <key name="android.template.-1181507588">
+      <recent name="edu.bluejack22_1.pillreminder" />
+    </key>
+    <key name="android.template.390622728">
       <recent name="edu.bluejack22_1.pillreminder" />
     </key>
     <key name="android.template.1358003908">
@@ -327,7 +345,28 @@
       <option name="project" value="LOCAL" />
       <updated>1672279714045</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="treatments">
+      <created>1672378161332</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1672378161332</updated>
+    </task>
+    <task id="LOCAL-00013" summary="timeline">
+      <created>1672486323694</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1672486323694</updated>
+    </task>
+    <task id="LOCAL-00014" summary="login register with google">
+      <created>1672491390220</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1672491390220</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -354,6 +393,10 @@
     <MESSAGE value="msg text &amp; photo" />
     <MESSAGE value="search, localization, reset pass" />
     <MESSAGE value="viewpager base" />
-    <option name="LAST_COMMIT_MESSAGE" value="viewpager base" />
+    <MESSAGE value="treatments" />
+    <MESSAGE value="timeline" />
+    <MESSAGE value="login register with google" />
+    <MESSAGE value="notification" />
+    <option name="LAST_COMMIT_MESSAGE" value="notification" />
   </component>
 </project>

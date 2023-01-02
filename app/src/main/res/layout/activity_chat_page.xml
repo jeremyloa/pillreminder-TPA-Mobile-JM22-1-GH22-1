@@ -78,7 +78,6 @@
         <androidx.recyclerview.widget.RecyclerView
             android:layout_below="@+id/chatPageHead"
             android:layout_weight="1"
-            android:layout_marginTop="10dp"
             android:id="@+id/rvChatPage"
             android:layout_width="match_parent"
             android:orientation="vertical"

@@ -1,7 +1,6 @@
 package edu.bluejack22_1.pillreminder.model
 
 import android.util.Log
-import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
@@ -13,20 +12,12 @@ class User(val role:String?, val uid:String?, val name:String?, val email:String
         var auth = Firebase.auth
         lateinit var curr: User
 
-        fun relog(){
+        fun login() {
             db.collection("users").document(auth.currentUser!!.uid).addSnapshotListener{ ss, e->
                 if (e!=null) return@addSnapshotListener
                 if (ss!=null && ss.exists()) {
                     curr = User(ss.data!!.get("role").toString(), ss.id, ss.data!!.get("name").toString(), ss.data!!.get("email").toString(), ss.data!!.get("phone").toString(), ss.data!!.get("photo").toString())
-                }
-            }
-        }
-
-        fun login(uid: String) {
-            db.collection("users").document(auth.currentUser!!.uid).addSnapshotListener{ ss, e->
-                if (e!=null) return@addSnapshotListener
-                if (ss!=null && ss.exists()) {
-                    curr = User(ss.data!!.get("role").toString(), ss.id, ss.data!!.get("name").toString(), ss.data!!.get("email").toString(), ss.data!!.get("phone").toString(), ss.data!!.get("photo").toString())
+                    Log.i("CURR_USER", curr.uid.toString())
                 }
             }
         }
@@ -54,7 +45,7 @@ class User(val role:String?, val uid:String?, val name:String?, val email:String
                         "phone" to phone,
                         "photo" to "https://i.pravatar.cc/150?u=" + user!!.uid
                     )
-                    db.collection("users").document(user!!.uid).set(addDoc).addOnSuccessListener {
+                    db.collection("users").document(user.uid).set(addDoc).addOnSuccessListener {
                         fetch_all_users()
                         cek = true
                     }.addOnFailureListener {

@@ -78,7 +78,6 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_below="@id/searchMsg"
-            android:layout_marginTop="10dp"
             android:id="@+id/rvMsgRoom"
             android:layout_width="match_parent"
             android:orientation="vertical"

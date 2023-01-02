@@ -5,7 +5,6 @@ import com.google.firebase.Timestamp
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import java.util.*
 
 class Appointment (val documentid:String?, val docconid:String?, val doctorid:String?, val patientid:String?, val datetime:Timestamp, val place:String?, val address:String?, val note:String?){
     companion object{
@@ -35,6 +34,7 @@ class Appointment (val documentid:String?, val docconid:String?, val doctorid:St
                             Log.i("GET_APPOINTMENTS", "Document: " + temp.documentid + " Place: " + temp.place.toString())
                         }
                     }
+                    Timeline.fetch_all_timeline()
                 }
                 .addOnFailureListener{ e ->
                     Log.e("GET_APPOINTMENTS", e.toString())
@@ -42,7 +42,7 @@ class Appointment (val documentid:String?, val docconid:String?, val doctorid:St
         }
 
         fun get_appointments_patientid(patientid: String?): MutableList<Appointment>{
-            var apts: MutableList<Appointment> = mutableListOf()
+            val apts: MutableList<Appointment> = mutableListOf()
             for (apt in allAppointments) {
                 if (apt.patientid.equals(patientid)) apts.add(apt)
             }
@@ -50,7 +50,7 @@ class Appointment (val documentid:String?, val docconid:String?, val doctorid:St
         }
 
         fun get_appointments_docconid(docconid: String?): MutableList<Appointment>{
-            var apts: MutableList<Appointment> = mutableListOf()
+            val apts: MutableList<Appointment> = mutableListOf()
             for (apt in allAppointments) {
                 if (apt.docconid.equals(docconid)) apts.add(apt)
             }
@@ -58,7 +58,7 @@ class Appointment (val documentid:String?, val docconid:String?, val doctorid:St
         }
 
         fun get_appointments_docconid_patientid(docconid: String?, patientid: String?): MutableList<Appointment>{
-            var apts: MutableList<Appointment> = mutableListOf()
+            val apts: MutableList<Appointment> = mutableListOf()
             for (apt in allAppointments) {
                 if (apt.docconid.equals(docconid) && apt.patientid.equals(patientid)) apts.add(apt)
             }
@@ -66,11 +66,18 @@ class Appointment (val documentid:String?, val docconid:String?, val doctorid:St
         }
 
         fun get_appointments_doctorid(doctorid: String?): MutableList<Appointment>{
-            var apts: MutableList<Appointment> = mutableListOf()
+            val apts: MutableList<Appointment> = mutableListOf()
             for (apt in allAppointments) {
                 if (apt.doctorid.equals(doctorid)) apts.add(apt)
             }
             return apts
+        }
+
+        fun get_appointments_documentid(documentid: String?): Appointment?{
+            for (apt in allAppointments) {
+                if (apt.documentid.equals(documentid)) return apt
+            }
+            return null
         }
 
         fun insert_appointment(apt: Appointment){

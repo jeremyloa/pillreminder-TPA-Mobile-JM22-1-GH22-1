@@ -83,7 +83,7 @@ TimePickerDialog.OnTimeSetListener {
         myYear = tempCal.get(Calendar.YEAR)
         myHour = tempCal.get(Calendar.HOUR)
         myMinute = tempCal.get(Calendar.MINUTE)
-        updateAppDateTime.text = Editable.Factory.getInstance().newEditable(String.format("%d-%d-%d %d:%d", myYear, myMonth, myDay, myHour, myMinute))
+        updateAppDateTime.text = Editable.Factory.getInstance().newEditable(String.format("%d-%02d-%02d %02d:%02d", myYear, myMonth, myDay, myHour, myMinute))
         updateAppDateTime.setOnClickListener{
             val calendar: Calendar = Calendar.getInstance()
             calendar.time = datetime.toDate()
@@ -137,6 +137,6 @@ TimePickerDialog.OnTimeSetListener {
     override fun onTimeSet(view: TimePicker?, hour: Int, minute: Int) {
         myHour = hour
         myMinute = minute
-        updateAppDateTime.text = Editable.Factory.getInstance().newEditable(String.format("%d-%d-%d %d:%d", myYear, myMonth, myDay, myHour, myMinute))
+        updateAppDateTime.text = Editable.Factory.getInstance().newEditable(String.format("%d-%02d-%02d %02d:%02d", myYear, myMonth, myDay, myHour, myMinute))
     }
 }
