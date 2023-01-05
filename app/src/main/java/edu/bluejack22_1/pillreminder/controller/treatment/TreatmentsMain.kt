@@ -28,6 +28,7 @@ class TreatmentsMain : Fragment(), TrtAdapter.TrtListener {
     private lateinit var toAddTrt: ImageView
     private lateinit var rvTrt: RecyclerView
     private lateinit var trtAdapter: TrtAdapter
+    private lateinit var layoutManager: LinearLayoutManager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,7 +49,9 @@ class TreatmentsMain : Fragment(), TrtAdapter.TrtListener {
 
     private fun buildRecyclerView() {
         rvTrt = binding.rvTrt
-        rvTrt.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        layoutManager.scrollToPosition(Treatment.get_afternow())
+        rvTrt.layoutManager = layoutManager
         trtAdapter = TrtAdapter(Treatment.get_treatments_patientid(User.curr.uid.toString()), this)
         rvTrt.adapter = trtAdapter
     }

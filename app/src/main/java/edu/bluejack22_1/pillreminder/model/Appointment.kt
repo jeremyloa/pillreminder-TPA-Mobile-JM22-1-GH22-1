@@ -101,5 +101,11 @@ class Appointment (val documentid:String?, val docconid:String?, val doctorid:St
         fun delete_appointment(documentid: String){
             db.collection("appointments").document(documentid).delete().addOnSuccessListener { Log.i("DELETE_APPOINTMENT", "Document: " + documentid) }.addOnFailureListener{ e -> Log.e("DELETE_APPOINTMENT", e.toString())}
         }
+
+        fun get_afternow(): Int {
+           val apt = get_appointments_doctorid(User.curr.uid)
+           for (ap in apt) if (ap.datetime.toDate().after(Timestamp.now().toDate())) return apt.indexOf(ap)
+           return 0
+        }
     }
 }

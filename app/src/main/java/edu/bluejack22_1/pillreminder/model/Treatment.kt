@@ -165,5 +165,11 @@ class Treatment (val documentid:String?, val patientid:String, val name:String, 
             if (ts.toDate().after(enddate.toDate())) return nextoccurrence
             return ts
         }
+
+        fun get_afternow(): Int {
+           val trt = get_treatments_patientid(User.curr.uid.toString())
+           for (tr in trt) if (tr.nextoccurrence.toDate().after(Timestamp.now().toDate())) return trt.indexOf(tr)
+           return 0
+        }
     }
 }

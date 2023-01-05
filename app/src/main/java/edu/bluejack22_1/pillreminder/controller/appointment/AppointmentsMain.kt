@@ -30,6 +30,7 @@ class AppointmentsMain : Fragment(), AppAdapter.AppListener {
     private lateinit var toAddApp: ImageView
     private lateinit var rvApp: RecyclerView
     private lateinit var appAdapter: AppAdapter
+    private lateinit var layoutManager: LinearLayoutManager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,7 +51,9 @@ class AppointmentsMain : Fragment(), AppAdapter.AppListener {
     }
     private fun buildRecyclerView(){
         rvApp = binding.rvApp
-        rvApp.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        layoutManager  = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        layoutManager.scrollToPosition(Appointment.get_afternow())
+        rvApp.layoutManager = layoutManager
         if (User.curr.role.equals("doctors"))  appAdapter = AppAdapter(Appointment.get_appointments_doctorid(User.curr.uid), this)
         else appAdapter = AppAdapter(Appointment.get_appointments_patientid(User.curr.uid), this)
         rvApp.adapter = appAdapter

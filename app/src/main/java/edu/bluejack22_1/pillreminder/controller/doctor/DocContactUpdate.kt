@@ -1,5 +1,6 @@
 package edu.bluejack22_1.pillreminder.controller.doctor
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -62,6 +63,7 @@ class DocContactUpdate : AppCompatActivity() {
                 Toast.makeText(this, resources.getString(R.string.update_con_success), Toast.LENGTH_LONG).show()
                 DoctorContact.fetch_all_doctorcontacts_patientid()
                 Handler(Looper.getMainLooper()).postDelayed({
+                    startActivity(Intent(this, DocContactMain::class.java))
                     finish()
                 }, 3000)
             }
