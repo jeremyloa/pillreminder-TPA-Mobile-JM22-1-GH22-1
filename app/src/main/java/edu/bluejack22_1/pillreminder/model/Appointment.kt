@@ -11,8 +11,7 @@ class Appointment (val documentid:String?, val docconid:String?, val doctorid:St
         var db = Firebase.firestore
         var allAppointments: MutableList<Appointment> = mutableListOf()
 
-        fun fetch_all_appointments(){
-            allAppointments.clear()
+        fun fetch_all_appointments(){            allAppointments.clear()
             db.collection("appointments")
                 .orderBy("datetime", Query.Direction.DESCENDING)
                 .get()

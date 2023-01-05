@@ -1,7 +1,13 @@
 package edu.bluejack22_1.pillreminder.controller.appointment
 
+import android.app.AlarmManager
+import android.app.AlertDialog
 import android.app.DatePickerDialog
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
 import android.app.TimePickerDialog
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,6 +21,7 @@ import com.google.firebase.Timestamp
 import edu.bluejack22_1.pillreminder.R
 import edu.bluejack22_1.pillreminder.controller.main.Activities
 import edu.bluejack22_1.pillreminder.controller.main.MainActivity
+import edu.bluejack22_1.pillreminder.controller.notification.*
 import edu.bluejack22_1.pillreminder.databinding.ActivityAppointmentsAddBinding
 import edu.bluejack22_1.pillreminder.model.Appointment
 import edu.bluejack22_1.pillreminder.model.User
@@ -71,6 +78,7 @@ TimePickerDialog.OnTimeSetListener {
                 DatePickerDialog(this@AppointmentsAdd, this@AppointmentsAdd, year, month,day)
              datePickerDialog.show()
         }
+        createNotifChannel()
         goAddApp = binding.goAddApp
         goAddApp.setOnClickListener {
             if (addAppNote.text.toString().isNullOrEmpty()) Toast.makeText(this, resources.getString(R.string.note_empty), Toast.LENGTH_SHORT).show()
@@ -85,6 +93,7 @@ TimePickerDialog.OnTimeSetListener {
                 var apt = Appointment("", docconid, doctorid, User.curr.uid, timestamp, addAppPlace.text.toString(), addAppAddress.text.toString(), addAppNote.text.toString())
                 Appointment.insert_appointment(apt)
                 Appointment.fetch_all_appointments()
+                scheduleNotif(timestamp.toDate().time)
                 Toast.makeText(this, resources.getString(R.string.insert_app_success), Toast.LENGTH_SHORT).show()
                 Handler(Looper.getMainLooper()).postDelayed({
                     val intent = Intent(this, MainActivity::class.java)
@@ -115,4 +124,69 @@ TimePickerDialog.OnTimeSetListener {
         myMinute = minute
         addAppDateTime.text = Editable.Factory.getInstance().newEditable(String.format("%d-%02d-%02d %02d:%02d", myYear, myMonth, myDay, myHour, myMinute))
     }
+
+
+    fun scheduleNotif(time: Long){
+        val intent = Intent(applicationContext, Notification::class.java)
+        val title = "Appointment"
+        val msg = binding.addAppNote.text.toString()
+        intent.putExtra(titleExtra, title)
+        intent.putExtra(messageExtra, msg)
+
+        val pendingIntent = PendingIntent.getBroadcast(
+            applicationContext,
+            notifId,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+        )
+
+        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+//        val time = getTime()
+        alarmManager.setExactAndAllowWhileIdle(
+            AlarmManager.RTC_WAKEUP,
+            time,
+            pendingIntent
+        )
+        showAlert(time, title, msg)
+    }
+
+    private fun showAlert(time: Long, title: String, msg: String) {
+        val date = Date(time)
+        val dateFormat = android.text.format.DateFormat.getLongDateFormat(applicationContext)
+        val timeFormat = android.text.format.DateFormat.getTimeFormat(applicationContext)
+
+
+        AlertDialog.Builder(this)
+            .setTitle("Notification Scheduled")
+            .setMessage(
+                "Title: " + title +
+                "\nMessage: " + msg +
+                "\nAt: " + dateFormat.format(date) + " " + timeFormat.format(date)
+            )
+            .setPositiveButton("Okay"){_, _ ->}
+            .show()
+
+    }
+
+    private fun getTime(): Long {
+        val min = myMinute
+        val hour = myHour
+        val day = myDay
+        val month = myMonth
+
+        val calendar = Calendar.getInstance()
+        calendar.set(year, month, day, hour, min)
+        return calendar.timeInMillis
+    }
+
+    fun createNotifChannel(){
+        val name = "Notif Chanel"
+        val desc = "A Description"
+        val importance = NotificationManager.IMPORTANCE_DEFAULT
+        val channel = NotificationChannel(chanId, name, importance)
+        channel.description = desc
+        val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.createNotificationChannel(channel)
+    }
+
 }
