@@ -1,6 +1,6 @@
 package edu.bluejack22_1.pillreminder.adapter
 
-import android.util.Log
+//import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +15,7 @@ import edu.bluejack22_1.pillreminder.model.MsgRoom
 import edu.bluejack22_1.pillreminder.model.User
 import java.text.SimpleDateFormat
 
-class MsgRoomAdapter (var rooms: MutableList<MsgRoom>, var listener: MsgRoomListener): RecyclerView.Adapter<MsgRoomAdapter.ViewHolder>() {
+class MsgRoomAdapter (private var rooms: MutableList<MsgRoom>, private var listener: MsgRoomListener): RecyclerView.Adapter<MsgRoomAdapter.ViewHolder>() {
     val dateFormat: SimpleDateFormat = SimpleDateFormat("HH:mm")
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -25,15 +25,15 @@ class MsgRoomAdapter (var rooms: MutableList<MsgRoom>, var listener: MsgRoomList
 
     override fun onBindViewHolder(vh: ViewHolder, position: Int) {
         if (rooms.isNullOrEmpty()) return
-        Log.i("ROOM", "Room ID: " + rooms[position].chatroomid.toString())
+//        Log.i("ROOM", "Room ID: " + rooms[position].chatroomid.toString())
         if (rooms[position].doctorid == User.curr.uid) {
             vh.itemChatName.text = User.get_user_uid(rooms[position].patientid)!!.name
             Picasso.get().load(User.get_user_uid(rooms[position].patientid)!!.photo).into(vh.itemChatPhoto)
         } else {
-            Log.i("ROOM_DOC", "Doctor ID: " + rooms[position].doctorid.toString())
+//            Log.i("ROOM_DOC", "Doctor ID: " + rooms[position].doctorid.toString())
             val doctor = DoctorContact.get_doctorcontacts_doctorid(rooms[position].doctorid.toString())
-            Log.i("ROOM_DOC", "Doctor Contact Name: " + doctor!!.name.toString())
-            vh.itemChatName.text = doctor.name.toString()
+//            Log.i("ROOM_DOC", "Doctor Contact Name: " + doctor!!.name.toString())
+            vh.itemChatName.text = doctor!!.name.toString()
             Picasso.get().load(User.get_user_uid(rooms[position].doctorid)!!.photo).into(vh.itemChatPhoto)
         }
         if (rooms[position].lasttime != null) {
@@ -56,7 +56,7 @@ class MsgRoomAdapter (var rooms: MutableList<MsgRoom>, var listener: MsgRoomList
         val itemChatName: TextView
         val itemChatTime: TextView
         val itemChatText: TextView
-        val llChat: LinearLayout
+        private val llChat: LinearLayout
         init {
             itemChatPhoto = view.findViewById(R.id.itemChatPhoto)
             itemChatName = view.findViewById(R.id.itemChatName)

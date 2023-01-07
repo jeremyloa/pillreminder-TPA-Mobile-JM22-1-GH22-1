@@ -47,15 +47,15 @@ class MsgRoom: Serializable {
                         val tempIndex = allMsgRoom.indexOf(temp)
                         if (tempIndex<0 || tempIndex > allMsgRoom.size) {
                             allMsgRoom.add(temp)
-                            Log.i("GET_MSGROOMS", "Document: " + temp.chatroomid + " Doctor: " + temp.doctorid + " Patient: " + temp.patientid)
-                            Log.i("ADD_MSGROOM", "Document: " + allMsgRoom[allMsgRoom.indexOf(temp)].chatroomid + " Doctor: " + allMsgRoom[allMsgRoom.indexOf(temp)].doctorid + " Patient: " + allMsgRoom[allMsgRoom.indexOf(temp)].patientid)
+//                            Log.i("GET_MSGROOMS", "Document: " + temp.chatroomid + " Doctor: " + temp.doctorid + " Patient: " + temp.patientid)
+//                            Log.i("ADD_MSGROOM", "Document: " + allMsgRoom[allMsgRoom.indexOf(temp)].chatroomid + " Doctor: " + allMsgRoom[allMsgRoom.indexOf(temp)].doctorid + " Patient: " + allMsgRoom[allMsgRoom.indexOf(temp)].patientid)
                         }
 
                     }
                     if (Messages.adapterInitialized()) Messages.msgRoomAdapter.notifyDataSetChanged()
                 }
                 .addOnFailureListener { e ->
-                    Log.e("GET_MSGROOMS", e.toString())
+//                    Log.e("GET_MSGROOMS", e.toString())
                 }
             } else {
                 db.collection("chatrooms")
@@ -85,8 +85,8 @@ class MsgRoom: Serializable {
                         val tempIndex = allMsgRoom.indexOf(temp)
                         if (tempIndex<0 || tempIndex > allMsgRoom.size) {
                             allMsgRoom.add(temp)
-                            Log.i("GET_MSGROOMS", "Document: " + temp.chatroomid + " Doctor: " + temp.doctorid + " Patient: " + temp.patientid)
-                            Log.i("ADD_MSGROOM", "Document: " + allMsgRoom[allMsgRoom.indexOf(temp)].chatroomid + " Doctor: " + allMsgRoom[allMsgRoom.indexOf(temp)].doctorid + " Patient: " + allMsgRoom[allMsgRoom.indexOf(temp)].patientid)
+//                            Log.i("GET_MSGROOMS", "Document: " + temp.chatroomid + " Doctor: " + temp.doctorid + " Patient: " + temp.patientid)
+//                            Log.i("ADD_MSGROOM", "Document: " + allMsgRoom[allMsgRoom.indexOf(temp)].chatroomid + " Doctor: " + allMsgRoom[allMsgRoom.indexOf(temp)].doctorid + " Patient: " + allMsgRoom[allMsgRoom.indexOf(temp)].patientid)
                         }
 
                     }

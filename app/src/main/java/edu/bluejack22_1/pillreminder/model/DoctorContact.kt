@@ -33,13 +33,13 @@ class DoctorContact (val documentid:String?, val doctorid:String?, val patientid
                     val tempIndex = allDoctorCon.indexOf(temp)
                     if (tempIndex<0 || tempIndex > allDoctorCon.size) {
                         allDoctorCon.add(temp)
-                        Log.i("GET_DOCTORCONTACTS", "Document: " + temp.documentid.toString() + " Doctor: " + temp.doctorid.toString())
+//                        Log.i("GET_DOCTORCONTACTS", "Document: " + temp.documentid.toString() + " Doctor: " + temp.doctorid.toString())
                     }
 
                 }
             }
             .addOnFailureListener { e ->
-                Log.e("GET_DOCTORCONTACTS", e.toString())
+//                Log.e("GET_DOCTORCONTACTS", e.toString())
             }
         }
 
@@ -93,7 +93,7 @@ class DoctorContact (val documentid:String?, val doctorid:String?, val patientid
 
         fun get_doctorcontacts_doctorid(doctorid: String): DoctorContact?{
             for (doc in allDoctorCon){
-                Log.i("SEARCH_DOCTORID", doc.doctorid.toString())
+//                Log.i("SEARCH_DOCTORID", doc.doctorid.toString())
                 if (doc.doctorid.equals(doctorid) && doc.patientid.equals(auth.currentUser!!.uid)) return doc
             }
             return null

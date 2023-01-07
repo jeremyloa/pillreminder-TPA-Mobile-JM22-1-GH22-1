@@ -76,8 +76,8 @@ class Messages : Fragment(), MsgRoomAdapter.MsgRoomListener {
     private fun buildRecyclerView(){
         rvMsgRoom = binding.rvMsgRoom
         rvMsgRoom.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        if (MsgRoom.allMsgRoom.isNullOrEmpty()) Log.i("ROOM_RV", "is null")
-        else Log.i("ROOM_RV", MsgRoom.allMsgRoom[0].chatroomid.toString())
+//        if (MsgRoom.allMsgRoom.isNullOrEmpty()) Log.i("ROOM_RV", "is null")
+//        else Log.i("ROOM_RV", MsgRoom.allMsgRoom[0].chatroomid.toString())
         msgRoomAdapter = MsgRoomAdapter(MsgRoom.allMsgRoom, this)
         rvMsgRoom.adapter = msgRoomAdapter
     }
@@ -85,8 +85,8 @@ class Messages : Fragment(), MsgRoomAdapter.MsgRoomListener {
     private fun searchRecyclerView(query: String){
         rvMsgRoom = binding.rvMsgRoom
         rvMsgRoom.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        if (MsgRoom.allMsgRoom.isNullOrEmpty()) Log.i("ROOM_RV", "is null")
-        else Log.i("ROOM_RV", MsgRoom.allMsgRoom[0].chatroomid.toString())
+//        if (MsgRoom.allMsgRoom.isNullOrEmpty()) Log.i("ROOM_RV", "is null")
+//        else Log.i("ROOM_RV", MsgRoom.allMsgRoom[0].chatroomid.toString())
         msgRoomAdapter = MsgRoomAdapter(MsgRoom.search_msgroom(query), this)
         rvMsgRoom.adapter = msgRoomAdapter
     }
@@ -106,7 +106,7 @@ class Messages : Fragment(), MsgRoomAdapter.MsgRoomListener {
             intent.putExtra("doctorname", "")
         }
         intent.putExtra("patientid", MsgRoom.allMsgRoom[pos].patientid)
-        Log.i("ROOM_CLICKED", "Pos = " + pos + " roomid = " + MsgRoom.allMsgRoom[pos].chatroomid)
+//        Log.i("ROOM_CLICKED", "Pos = " + pos + " roomid = " + MsgRoom.allMsgRoom[pos].chatroomid)
 //        Log.i("CLICK_DOC_MSG_ROOM", MsgRoom.allMsgRoom[pos].chatroomid.toString())
         startActivity(intent)
     }

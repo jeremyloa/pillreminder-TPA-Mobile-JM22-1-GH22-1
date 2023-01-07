@@ -17,7 +17,7 @@ class User(val role:String?, val uid:String?, val name:String?, val email:String
                 if (e!=null) return@addSnapshotListener
                 if (ss!=null && ss.exists()) {
                     curr = User(ss.data!!.get("role").toString(), ss.id, ss.data!!.get("name").toString(), ss.data!!.get("email").toString(), ss.data!!.get("phone").toString(), ss.data!!.get("photo").toString())
-                    Log.i("CURR_USER", curr.uid.toString())
+//                    Log.i("CURR_USER", curr.uid.toString())
                 }
             }
         }
@@ -76,7 +76,7 @@ class User(val role:String?, val uid:String?, val name:String?, val email:String
                             doc.data.get("photo").toString()
                         )
                     allUsers.add(temp)
-                    Log.i("GET_USERS", temp.toString())
+//                    Log.i("GET_USERS", temp.toString())
                 }
             }
             .addOnFailureListener { e ->

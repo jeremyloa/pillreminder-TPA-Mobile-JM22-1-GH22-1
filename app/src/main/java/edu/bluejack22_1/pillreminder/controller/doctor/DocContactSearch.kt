@@ -90,26 +90,28 @@ class DocContactSearch : AppCompatActivity(), DocAdapter.DocClickListener {
                     intent.putExtra("patientid", User.curr.uid)
                     intent.putExtra("lasttime", Timestamp.now())
                     intent.putExtra("lastmsg", "")
-                    Log.i("ADD_MSGROOM_DB", "Success")
-                    Log.i("ROOM_CODE",ref.id)
+//                    Log.i("ADD_MSGROOM_DB", "Success")
+//                    Log.i("ROOM_CODE",ref.id)
                     intent.putExtra("chatroomid", ref.id)
-                    Log.i("CLICK_DOC_MSG_ROOM", chtroom?.chatroomid.toString())
-                    Log.i("CURR_USER", User.curr.uid.toString())
+//                    Log.i("CLICK_DOC_MSG_ROOM", chtroom?.chatroomid.toString())
+//                    Log.i("CURR_USER", User.curr.uid.toString())
                     startActivity(intent)
                 }
-                .addOnFailureListener { Log.i("ADD_MSGROOM_DB", "Failed") }
+                .addOnFailureListener {
+//                    Log.i("ADD_MSGROOM_DB", "Failed")
+                }
 
         } else {
-            Log.i("ROOM_AVAIL", chtroom!!.chatroomid.toString())
+//            Log.i("ROOM_AVAIL", chtroom!!.chatroomid.toString())
 //            Msg.fetch_curr_msg(chtroom!!.chatroomid.toString())
             intent.putExtra("doctorid", chtroom!!.doctorid)
             intent.putExtra("patientid", chtroom!!.patientid)
             intent.putExtra("lasttime", chtroom!!.lasttime)
             intent.putExtra("lastmsg", chtroom!!.lastmsg)
-            Log.i("ROOM_CODE", chtroom!!.chatroomid.toString())
+//            Log.i("ROOM_CODE", chtroom!!.chatroomid.toString())
             intent.putExtra("chatroomid", chtroom!!.chatroomid)
-            Log.i("CLICK_DOC_MSG_ROOM", chtroom?.chatroomid.toString())
-            Log.i("CURR_USER", User.curr.uid.toString())
+//            Log.i("CLICK_DOC_MSG_ROOM", chtroom?.chatroomid.toString())
+//            Log.i("CURR_USER", User.curr.uid.toString())
             startActivity(intent)
         }
     }

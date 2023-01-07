@@ -102,9 +102,9 @@ TimePickerDialog.OnTimeSetListener {
             else if (updateAppDateTime.text.toString().isNullOrEmpty()) Toast.makeText(this, resources.getString(R.string.date_time_empty), Toast.LENGTH_SHORT).show()
             else {
                 var datetime = LocalDateTime.of(myYear, myMonth, myDay, myHour, myMinute)
-                Log.i("TIMESTAMP", datetime.year.toString() + "-" + datetime.month.toString())
+//                Log.i("TIMESTAMP", datetime.year.toString() + "-" + datetime.month.toString())
                 var timestamp = Timestamp(datetime.toEpochSecond(ZoneId.systemDefault().rules.getOffset(Instant.now())), 0)
-                Log.i("TIMESTAMP", timestamp.seconds.toString() + " " + timestamp.nanoseconds.toString())
+//                Log.i("TIMESTAMP", timestamp.seconds.toString() + " " + timestamp.nanoseconds.toString())
                 Appointment.update_appointment(documentid, timestamp, updateAppPlace.text.toString(), updateAppAddress.text.toString(), updateAppNote.text.toString())
                 Appointment.fetch_all_appointments()
                 Toast.makeText(this, resources.getString(R.string.update_app_success), Toast.LENGTH_SHORT).show()

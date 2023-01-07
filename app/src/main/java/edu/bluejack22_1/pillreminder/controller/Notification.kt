@@ -48,7 +48,7 @@ class Notification : BroadcastReceiver() {
                     val pendingIntent = PendingIntent.getBroadcast(ctx, tl.timelinetype, intent, PendingIntent.FLAG_UPDATE_CURRENT)
                     val alarm = AlarmData(tl.datetimestamp.seconds*1000, pendingIntent)
                     alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, alarm.trigerAtMillis, alarm.pendingIntent)
-                    Log.i("ADD_ALARM", "Time: " + alarm.trigerAtMillis + " Content: " + msg)
+//                    Log.i("ADD_ALARM", "Time: " + alarm.trigerAtMillis + " Content: " + msg)
                     alarms.add(alarm)
                 } else {
                     intent.putExtra("notificationID", tls.indexOf(tl))
@@ -62,7 +62,7 @@ class Notification : BroadcastReceiver() {
                     val pendingIntent = PendingIntent.getBroadcast(ctx, tl.timelinetype, intent, PendingIntent.FLAG_UPDATE_CURRENT)
                     val alarm = AlarmData(tl.datetimestamp.seconds*1000, pendingIntent)
                     alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, alarm.trigerAtMillis, alarm.pendingIntent)
-                    Log.i("ADD_ALARM", "Time: " + alarm.trigerAtMillis + " Content: " + msg)
+//                    Log.i("ADD_ALARM", "Time: " + alarm.trigerAtMillis + " Content: " + msg)
                     alarms.add(alarm)
                 }
             }

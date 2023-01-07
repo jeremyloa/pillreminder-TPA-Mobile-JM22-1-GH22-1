@@ -113,8 +113,9 @@ class ChatPage : AppCompatActivity(), MsgAdapter.MsgListener {
             .whereEqualTo("chatroomid", chatroomid)
             .orderBy("sent")
             .addSnapshotListener { ss, e ->
-                if (e!=null) Log.i("CHAT_SS_ERROR", e.message.toString())
-                else if (ss!=null && !ss.isEmpty) {
+//                if (e!=null) Log.i("CHAT_SS_ERROR", e.message.toString())
+//                else
+                    if (ss!=null && !ss.isEmpty) {
                     val newItems = ss.toObjects(Msg::class.java)
                     msgs.clear()
                     msgs.addAll(newItems)
@@ -139,7 +140,7 @@ class ChatPage : AppCompatActivity(), MsgAdapter.MsgListener {
                          if (task.isSuccessful) {
                             ref.downloadUrl.addOnSuccessListener { uri ->
                                 sendImgLink = uri.toString()
-                                Log.i("UPLOAD_CHAT_IMG", sendImgLink)
+//                                Log.i("UPLOAD_CHAT_IMG", sendImgLink)
                                 chatPageTxt.text = Editable.Factory.getInstance().newEditable(sendImgLink)
                                 chatPageTxt.isEnabled = false
                                 sendImg = true

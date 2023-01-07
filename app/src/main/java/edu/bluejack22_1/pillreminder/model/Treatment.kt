@@ -40,7 +40,7 @@ class Treatment (val documentid:String?, val patientid:String, val name:String, 
                         val tempIndex = allTreatments.indexOf(temp)
                         if (tempIndex<0 || tempIndex> allTreatments.size) {
                             allTreatments.add(temp)
-                            Log.i("GET_TREATMENTS", "Document: " + temp.name + " Name: " + temp.name)
+//                            Log.i("GET_TREATMENTS", "Document: " + temp.name + " Name: " + temp.name)
                         }
                     }
                     Timeline.fetch_all_timeline()
@@ -76,12 +76,20 @@ class Treatment (val documentid:String?, val patientid:String, val name:String, 
                 "remindhour" to trt.remindhour,
                 "remindmin" to trt.remindmin
             )
-            db.collection("treatments").add(addDoc).addOnSuccessListener { Log.i("INSERT_TREATMENT", "Patientid: " + trt.patientid + " Name: " + trt.name) }.addOnFailureListener{ e -> Log.e("INSERT_TREATMENT", e.toString())}
+            db.collection("treatments").add(addDoc).addOnSuccessListener {
+//                Log.i("INSERT_TREATMENT", "Patientid: " + trt.patientid + " Name: " + trt.name)
+            }.addOnFailureListener{ e ->
+//                Log.e("INSERT_TREATMENT", e.toString())
+            }
         }
 
         fun update_treatment(documentid: String, name:String, dose:Double, unit:String, frequency:Int, nextoccurrence:Timestamp, startdate:Timestamp, enddate:Timestamp, remindhour:Int, remindmin:Int){
             val newoccurrence = count_next_occurrence(frequency, nextoccurrence, enddate, remindhour, remindmin)
-            db.collection("treatments").document(documentid).update("name", name,  "dose", dose, "unit", unit, "frequency", frequency, "nextoccurrence", newoccurrence, "startdate", startdate, "enddate", enddate, "remindhour", remindhour, "remindmin", remindmin).addOnSuccessListener { Log.i("UPDATE_TREATMENT", "Document: " + documentid + " Name: " + name) }.addOnFailureListener{ e -> Log.e("UPDATE_TREATMENT", e.toString())}
+            db.collection("treatments").document(documentid).update("name", name,  "dose", dose, "unit", unit, "frequency", frequency, "nextoccurrence", newoccurrence, "startdate", startdate, "enddate", enddate, "remindhour", remindhour, "remindmin", remindmin).addOnSuccessListener {
+//                Log.i("UPDATE_TREATMENT", "Document: " + documentid + " Name: " + name)
+            }.addOnFailureListener{ e ->
+//                Log.e("UPDATE_TREATMENT", e.toString())
+            }
         }
 
         fun update_occurrence(documentid: String, frequency: Int, nextoccurrence: Timestamp, enddate: Timestamp, remindhour: Int, remindmin: Int){
@@ -91,7 +99,7 @@ class Treatment (val documentid:String?, val patientid:String, val name:String, 
                 db.collection("treatments").document(documentid)
                     .update("nextoccurrence", newoccurrence, )
                     .addOnSuccessListener {
-                        Log.i("UPDATE_TREATMENT_OCCURRENCE", "Document: " + documentid)
+//                        Log.i("UPDATE_TREATMENT_OCCURRENCE", "Document: " + documentid)
                         fetch_all_treatments()
 //                        db.collection("treatments").document(documentid).get().addOnSuccessListener { trt ->
 //                            val tempFreq = trt.data!!.get("frequency") as Long
@@ -130,7 +138,11 @@ class Treatment (val documentid:String?, val patientid:String, val name:String, 
 //        }
 
         fun delete_treatment(documentid: String){
-            db.collection("treatments").document(documentid).delete().addOnSuccessListener { Log.i("DELETE_TREATMENT", "Document: " + documentid) }.addOnFailureListener{ e -> Log.e("DELETE_TREATMENT", e.toString())}
+            db.collection("treatments").document(documentid).delete().addOnSuccessListener {
+//                Log.i("DELETE_TREATMENT", "Document: " + documentid)
+            }.addOnFailureListener{ e ->
+//                Log.e("DELETE_TREATMENT", e.toString())
+            }
         }
 
         fun count_next_occurrence(frequency: Int, nextoccurrence: Timestamp, enddate: Timestamp, remindhour: Int, remindmin: Int): Timestamp {

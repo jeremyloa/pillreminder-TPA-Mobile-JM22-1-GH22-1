@@ -32,13 +32,13 @@ class Appointment (val documentid:String?, val docconid:String?, val doctorid:St
                         val tempIndex = allAppointments.indexOf(temp)
                         if (tempIndex<0 || tempIndex> allAppointments.size) {
                             allAppointments.add(temp)
-                            Log.i("GET_APPOINTMENTS", "Document: " + temp.documentid + " Place: " + temp.place.toString())
+//                            Log.i("GET_APPOINTMENTS", "Document: " + temp.documentid + " Place: " + temp.place.toString())
                         }
                     }
                     Timeline.fetch_all_timeline()
                 }
                 .addOnFailureListener{ e ->
-                    Log.e("GET_APPOINTMENTS", e.toString())
+//                    Log.e("GET_APPOINTMENTS", e.toString())
                 }
         }
 
@@ -91,15 +91,27 @@ class Appointment (val documentid:String?, val docconid:String?, val doctorid:St
                 "address" to apt.address,
                 "note" to apt.note
             )
-            db.collection("appointments").add(addDoc).addOnSuccessListener { Log.i("INSERT_APPOINTMENT", "Docconid: " + apt.docconid + " Place: " + apt.place.toString()) }.addOnFailureListener{ e -> Log.e("INSERT_APPOINTMENT", e.toString())}
+            db.collection("appointments").add(addDoc).addOnSuccessListener {
+//                Log.i("INSERT_APPOINTMENT", "Docconid: " + apt.docconid + " Place: " + apt.place.toString())
+            }.addOnFailureListener{ e ->
+//                Log.e("INSERT_APPOINTMENT", e.toString())
+            }
         }
 
         fun update_appointment(documentid: String, datetime: Timestamp, place: String, address: String, note: String){
-            db.collection("appointments").document(documentid).update("datetime", datetime,  "place", place, "address", address, "note", note).addOnSuccessListener { Log.i("UPDATE_APPOINTMENT", "Document: " + documentid + " Place: " + place) }.addOnFailureListener{ e -> Log.e("UPDATE_APPOINTMENT", e.toString())}
+            db.collection("appointments").document(documentid).update("datetime", datetime,  "place", place, "address", address, "note", note).addOnSuccessListener {
+//                Log.i("UPDATE_APPOINTMENT", "Document: " + documentid + " Place: " + place)
+            }.addOnFailureListener{ e ->
+//                Log.e("UPDATE_APPOINTMENT", e.toString())
+            }
         }
 
         fun delete_appointment(documentid: String){
-            db.collection("appointments").document(documentid).delete().addOnSuccessListener { Log.i("DELETE_APPOINTMENT", "Document: " + documentid) }.addOnFailureListener{ e -> Log.e("DELETE_APPOINTMENT", e.toString())}
+            db.collection("appointments").document(documentid).delete().addOnSuccessListener {
+//                Log.i("DELETE_APPOINTMENT", "Document: " + documentid)
+            }.addOnFailureListener{ e ->
+//                Log.e("DELETE_APPOINTMENT", e.toString())
+            }
         }
 
         fun get_afternow(): Int {

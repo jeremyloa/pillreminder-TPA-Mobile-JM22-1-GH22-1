@@ -15,9 +15,9 @@ class Timeline (val documentid: String?, val timelinetype: Int, val datetimestam
             for (trt in Treatment.allTreatments) if (trt.patientid.equals(auth.currentUser!!.uid)) allTimeline.add(Timeline(trt.documentid, 1, trt.nextoccurrence))
             for (apt in Appointment.allAppointments) if (apt.patientid.equals(auth.currentUser!!.uid) || apt.doctorid.equals(User.curr.uid)) allTimeline.add(Timeline(apt.documentid, 2, apt.datetime))
             allTimeline.sortBy { it.datetimestamp }
-            for (tl in allTimeline)
-                Log.i("TIMELINE", "Doc: " + tl.documentid + " Type: " + tl.timelinetype + " Stamp: " + tl.datetimestamp.toDate().toString())
-            Log.i("TIMELINE_GET", "Size: "+ allTimeline.size + " Treatment Size: " + Treatment.allTreatments.size + " Appointment Size: " + Appointment.allAppointments.size)
+//            for (tl in allTimeline)
+//                Log.i("TIMELINE", "Doc: " + tl.documentid + " Type: " + tl.timelinetype + " Stamp: " + tl.datetimestamp.toDate().toString())
+//            Log.i("TIMELINE_GET", "Size: "+ allTimeline.size + " Treatment Size: " + Treatment.allTreatments.size + " Appointment Size: " + Appointment.allAppointments.size)
         }
 
         fun get_afternow(): Int {

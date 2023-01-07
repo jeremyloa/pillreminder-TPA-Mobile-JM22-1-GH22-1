@@ -20,10 +20,6 @@ class Splash : AppCompatActivity() {
 
         if (auth.currentUser!=null){
             User.login()
-//            while (!User.currInitialized()){
-//                Log.i("FETCH_WAIT", "waiting")
-//                User.relog()
-//            }
             User.fetch_all_users()
             DoctorContact.fetch_all_doctorcontacts_patientid()
             Appointment.fetch_all_appointments()
