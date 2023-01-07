@@ -11,6 +11,8 @@ import android.widget.TextView
 import android.widget.Toast
 import com.squareup.picasso.Picasso
 import edu.bluejack22_1.pillreminder.R
+import edu.bluejack22_1.pillreminder.controller.main.Activities
+import edu.bluejack22_1.pillreminder.controller.main.MainActivity
 import edu.bluejack22_1.pillreminder.databinding.ActivityDocContactDetailBinding
 import edu.bluejack22_1.pillreminder.model.DoctorContact
 
@@ -68,6 +70,12 @@ class DocContactDetail : AppCompatActivity() {
         docDetailMail.text = doc.email
         if (doc.doctorid.equals("unregistered"))
             docDetailChat.visibility = View.INVISIBLE
+        docDetailAppointment.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("fragment", Activities::class.java)
+            startActivity(intent)
+//            finish()
+        }
         toUpdateDocContact.setOnClickListener{
             var intent = Intent(this, DocContactUpdate::class.java)
             intent.putExtra("doctorcontact", doc)
